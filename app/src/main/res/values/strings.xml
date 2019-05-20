@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NextGenAppAndroid</string>
+    <string name="preferences">preferences</string>
 </resources>

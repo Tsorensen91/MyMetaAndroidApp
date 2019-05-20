@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/preferences"
+        android:icon="@drawable/ic_edit_regular"
+        android:id="@+id/preferences"
+        app:showAsAction="ifRoom|withText"
+        />
+</menu>
