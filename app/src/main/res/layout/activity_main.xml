@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
-            android:src="@mipmap/ic_logo2"
+            android:src="@mipmap/ic_logo"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="4dp" />
 

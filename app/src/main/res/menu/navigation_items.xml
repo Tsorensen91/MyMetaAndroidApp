@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom" />
     <item android:title=""
         android:id="@+id/calendarButton"
-        android:icon="@drawable/ic_edit_regular"
+        android:icon="@mipmap/ic_logo2"
         android:state_checked="true" app:itemBackground="@drawable/box"
         app:showAsAction="ifRoom" />
     <item android:title=""
