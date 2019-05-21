@@ -2,21 +2,33 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="1"
+    <item android:title=""
+        android:id="@+id/transitionButton"
         android:icon="@drawable/ic_edit_regular"
-        app:showAsAction="always" />
-    <item android:title="2"
+        android:itemBackground="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item android:title=""
+        android:id="@+id/conditionButton"
         android:icon="@drawable/ic_edit_regular"
-        app:showAsAction="always"/>
+        android:state_checked="true" app:itemBackground="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item android:title=""
+        android:id="@+id/calendarButton"
+        android:icon="@drawable/ic_edit_regular"
+        android:state_checked="true" app:itemBackground="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item android:title=""
+        android:id="@+id/mailtrackerButton"
+        android:icon="@drawable/ic_edit_regular"
+        android:state_checked="false"
+        android:drawable="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item android:title=""
+        android:id="@+id/diettrackerButton"
+        android:icon="@drawable/ic_edit_regular"
+        android:state_checked="true"
+        android:drawable="@drawable/box"
 
-    <item android:title="3"
-        android:icon="@drawable/ic_edit_regular"
-        app:showAsAction="always"/>
-    <item android:title="4"
-        android:icon="@drawable/ic_edit_regular"
-        app:showAsAction="always"/>
-    <item android:title="5"
-        android:icon="@drawable/ic_edit_regular"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom" />
 
 </menu>

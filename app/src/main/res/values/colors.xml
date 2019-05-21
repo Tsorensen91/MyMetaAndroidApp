@@ -7,8 +7,6 @@
     <color name="colorTeal">#01b0ad</color>
     <color name="colorWhite">#ffffff</color>
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-        
-    </selector>
+
 
 </resources>
