@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     val fragment3 = CalendarFragment()
     val fragment4 = MailtrackerFragment()
     val fragment5 = DiettrackerFragment()
-    var activeFragment:Fragment = fragment1
+    var activeFragment:Fragment = fragment3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +23,13 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment1).hide(fragment1).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment2).hide(fragment2).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment3).hide(fragment3).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment4).hide(fragment4).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment5).hide(fragment5).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment1).commit()
+        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment3).commit()
 
+        navigation.selectedItemId = R.id.calendarButton
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.transitionButton -> {
