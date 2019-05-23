@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit_regular"
+        android:id="@+id/addStepIcon"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@id/addsteptext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/addsteptext"
+        android:text="Add a new step"
+        app:layout_constraintStart_toEndOf="@id/addStepIcon"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/transitionDate"
+            android:layout_marginTop="35dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transitionBarTop"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="2dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/transitionBarTop"
+            app:layout_constraintTop_toBottomOf="@id/addStepIcon"
+            app:layout_constraintStart_toEndOf="@id/transitionDate"
+            app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+            android:src="@color/colorGrey"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

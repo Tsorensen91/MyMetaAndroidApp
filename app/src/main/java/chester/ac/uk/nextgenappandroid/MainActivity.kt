@@ -4,9 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_transition_tracker.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +62,8 @@ class MainActivity : AppCompatActivity() {
             true
 
         }
+
+
 
     }
 

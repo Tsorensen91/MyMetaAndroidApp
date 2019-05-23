@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/transitionItemNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/transitionBarTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment" />
+
+    <TextView
+        android:id="@+id/transitionDate"
+        android:layout_marginTop="35dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/transitionBarTop"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="20/20/2020" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="2dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/transitionBarTop"
+        app:layout_constraintStart_toEndOf="@id/transitionDate"
+        app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+        android:src="@color/colorGrey"/>
+
+<android.support.v7.widget.AppCompatImageView
+        android:layout_width="2dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/transitionBarBottom"
+    app:layout_constraintTop_toBottomOf="@id/transitionCircle"
+        app:layout_constraintStart_toEndOf="@id/transitionDate"
+        app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+        android:src="@color/colorGrey"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/transitionBarTop"
+        android:id="@+id/transitionCircle"
+        app:layout_constraintStart_toEndOf="@id/transitionDate"
+        app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+        android:src="@drawable/circleoutline"/>
+
+</android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
