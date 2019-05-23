@@ -7,18 +7,17 @@
     tools:context=".ConditionFragment"
     tools:layout_editor_absoluteY="25dp">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:id="@+id/profilePicture"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_height="126dp"
         android:layout_marginStart="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         android:contentDescription="@string/profilePicture"
+        android:src="@drawable/ic_edit_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPictureTitle"
-        tools:src="@tools:sample/avatars" />
+        />
 
     <TextView
         android:id="@+id/tvPictureTitle"
@@ -28,7 +27,7 @@
         android:layout_marginTop="46dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/profilePicture"
+        android:text="Picture:"
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +46,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/editProfilePicture"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="About:" />
 
@@ -69,7 +68,7 @@
 
     <TextView
         android:id="@+id/tvSymptomsTitle2"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -80,11 +79,11 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSymtoms"
+        app:layout_constraintTop_toBottomOf="@+id/etSymptoms"
         tools:text="My Medication:" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/editProfilePicture"
         android:layout_width="39dp"
         android:layout_height="30dp"
         android:layout_marginTop="46dp"
@@ -97,7 +96,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/editAboutMe"
         android:layout_width="39dp"
         android:layout_height="30dp"
         android:layout_marginTop="46dp"
@@ -111,7 +110,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/editMySymptoms"
         android:layout_width="39dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -120,12 +119,12 @@
         android:contentDescription="@string/editbutton"
         android:src="@drawable/ic_edit_regular"
         android:tint="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/etSymtoms"
+        app:layout_constraintBottom_toTopOf="@+id/etSymptoms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAbout" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/editMyMedication"
         android:layout_width="39dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -134,9 +133,9 @@
         android:contentDescription="@string/editbutton"
         android:src="@drawable/ic_edit_regular"
         android:tint="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/etSymtoms2"
+        app:layout_constraintBottom_toTopOf="@+id/etMedication"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSymtoms" />
+        app:layout_constraintTop_toBottomOf="@+id/etSymptoms" />
 
     <EditText
         android:id="@+id/etAbout"
@@ -152,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAboutTitle" />
 
     <EditText
-        android:id="@+id/etSymtoms"
+        android:id="@+id/etSymptoms"
         android:layout_width="0dp"
         android:layout_height="126dp"
         android:layout_marginStart="20dp"
@@ -165,8 +164,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSymptomsTitle" />
 
     <EditText
-        android:id="@+id/etSymtoms2"
-        android:layout_width="344dp"
+        android:id="@+id/etMedication"
+        android:layout_width="0dp"
         android:layout_height="126dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
