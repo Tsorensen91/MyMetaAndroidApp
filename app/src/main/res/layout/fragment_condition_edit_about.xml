@@ -109,7 +109,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEnterName" />
@@ -120,7 +120,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"
         app:layout_constraintStart_toEndOf="@+id/etDayDropDown"
         app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
@@ -130,7 +130,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginEnd="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
@@ -139,7 +139,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
@@ -149,7 +149,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="#ebebeb"
+        android:background="@color/colorLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCondition" />
@@ -160,7 +160,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:textColor="@color/co"
+        android:background="@color/colorLightGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
