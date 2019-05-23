@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
                     activeFragment = fragment3
                 }
                 R.id.mailtrackerButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment4).commit()
-                    activeFragment = fragment4
+                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment6).commit()
+                    activeFragment = fragment6
                 }
                 R.id.diettrackerButton -> {
                     supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment5).commit()

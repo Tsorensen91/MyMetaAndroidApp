@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConditionAboutEdit">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvEnterName"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Enter Your Name:" />
+        android:text="Enter Your Name:" />
 
     <TextView
         android:id="@+id/tvGender"
@@ -37,11 +37,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName"
-        tools:text="Select Your Gender:" />
+        android:text="Select Your Gender:" />
 
     <TextView
         android:id="@+id/tvCondition"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -53,11 +53,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/genderSpinner"
-        tools:text="Enter Your Metabolic Condition:" />
+        android:text="Enter Your Metabolic Condition:" />
 
     <TextView
         android:id="@+id/tvHospital"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -69,11 +69,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCondition"
-        tools:text="Enter the Name of Your Hospital:" />
+        android:text="Enter the Name of Your Hospital:" />
 
     <TextView
         android:id="@+id/tvEthnicity"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -85,11 +85,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etHospital"
-        tools:text="Select Your Ethnicity:" />
+        android:text="Select Your Ethnicity:" />
 
     <TextView
         android:id="@+id/tvDoB"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ethnicitySpinner"
-        tools:text="Enter Your Date of Birth" />
+        android:text="Enter Your Date of Birth" />
 
     <TextView
         android:id="@+id/etName"
@@ -114,34 +114,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEnterName" />
 
-    <TextView
-        android:id="@+id/etMonthDropDown"
-        android:layout_width="104dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/colorLightGrey"
-        app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"
-        app:layout_constraintStart_toEndOf="@+id/etDayDropDown"
-        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+    <!--<TextView-->
+        <!--android:id="@+id/etMonthDropDown"-->
+        <!--android:layout_width="104dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginStart="20dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:background="@color/colorLightGrey"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/etDayDropDown"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tvDoB" />-->
 
-    <TextView
-        android:id="@+id/etYearDropDown"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/colorLightGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+    <!--<TextView-->
+        <!--android:id="@+id/etYearDropDown"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:background="@color/colorLightGrey"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tvDoB" />-->
 
-    <TextView
-        android:id="@+id/etDayDropDown"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:background="@color/colorLightGrey"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+    <!--<TextView-->
+        <!--android:id="@+id/etDayDropDown"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginStart="20dp"-->
+        <!--android:background="@color/colorLightGrey"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tvDoB" />-->
 
     <TextView
         android:id="@+id/etCondition"
@@ -193,16 +193,16 @@
         android:id="@+id/daySpinner"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/etMonthDropDown"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/monthSpinner"
         app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
     <Spinner
         android:id="@+id/monthSpinner"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpinner"
         app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
     <Spinner
