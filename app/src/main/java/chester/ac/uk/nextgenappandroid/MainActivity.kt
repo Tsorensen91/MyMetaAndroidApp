@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     val fragment3 = CalendarFragment()
     val fragment4 = MailtrackerFragment()
     val fragment5 = DiettrackerFragment()
+    val fragment6 = ConditionEditAbout()
     var activeFragment:Fragment = fragment3
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment2).hide(fragment2).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment4).hide(fragment4).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment5).hide(fragment5).commit()
+        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment6).hide(fragment6).commit()
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment3).commit()
 
         navigation.selectedItemId = R.id.calendarButton
@@ -60,16 +62,18 @@ class MainActivity : AppCompatActivity() {
 
             }
             true
-
         }
-
-
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    fun fragmentSwap (fragment: Fragment) {
+        supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+        activeFragment = fragment
     }
 
 
