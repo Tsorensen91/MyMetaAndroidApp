@@ -14,4 +14,43 @@
     <string name="select_your_gender">Select Your Gender:</string>
     <string name="enter_your_name">Enter Your Name:</string>
     <string name="enter_your_date_of_birth">Enter Your Date of Birth:</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="ethnicity_spinner">
+        <item>White</item>
+        <item>English</item>
+        <item>Welsh</item>
+        <item>Scottish</item>
+        <item>Northern Irish</item>
+        <item>Irish</item>
+        <item>Gypsy or Irish Traveller</item>
+        <item>Any other White background</item>
+        <item>Mixed or Multiple ethnic groups</item>
+        <item>White and Black Caribbean</item>
+        <item>White and Black African</item>
+        <item>Any other Mixed or Multiple background</item>
+        <item>Asian</item>
+        <item>Indian</item>
+        <item>Pakistani</item>
+        <item>Bangladeshi</item>
+        <item>Chinese</item>
+        <item>Any other Asian background</item>
+        <item>Black</item>
+        <item>African</item>
+        <item>African American</item>
+        <item>Caribbean</item>
+        <item>Any other Black background</item>
+        <item>Other ethnic groups</item>
+        <item>Arab</item>
+        <item>Hispanic</item>
+        <item>Latino</item>
+        <item>Native American</item>
+        <item>Pacific Islander</item>
+        <item>Any other ethnic group</item>
+    </string-array>
 </resources>

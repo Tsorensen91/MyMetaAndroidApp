@@ -15,12 +15,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/enter_your_name"
         android:textColor="@color/colorWhite"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Enter Your Name:" />
 
     <TextView
         android:id="@+id/tvGender"
@@ -31,13 +31,13 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/select_your_gender"
         android:textColor="@color/colorWhite"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName" />
+        app:layout_constraintTop_toBottomOf="@+id/etName"
+        tools:text="Select Your Gender:" />
 
     <TextView
         android:id="@+id/tvCondition"
@@ -48,12 +48,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/enter_your_metabolic_condition"
         android:textColor="@color/colorWhite"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etGender" />
+        app:layout_constraintTop_toBottomOf="@+id/genderSpinner"
+        tools:text="Enter Your Metabolic Condition:" />
 
     <TextView
         android:id="@+id/tvHospital"
@@ -64,12 +64,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/enter_the_name_of_your_hospital"
         android:textColor="@color/colorWhite"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCondition" />
+        app:layout_constraintTop_toBottomOf="@+id/etCondition"
+        tools:text="Enter the Name of Your Hospital:" />
 
     <TextView
         android:id="@+id/tvEthnicity"
@@ -80,12 +80,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/select_your_ethnicity"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHospital" />
+        app:layout_constraintTop_toBottomOf="@+id/etHospital"
+        tools:text="Select Your Ethnicity:" />
 
     <TextView
         android:id="@+id/tvDoB"
@@ -96,12 +96,12 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
         android:gravity="center_vertical"
-        android:text="@string/enter_your_date_of_birth"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEthnicity" />
+        app:layout_constraintTop_toBottomOf="@+id/ethnicitySpinner"
+        tools:text="Enter Your Date of Birth" />
 
     <TextView
         android:id="@+id/etName"
@@ -115,35 +115,33 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEnterName" />
 
     <TextView
-        android:id="@+id/etEthnicity"
-        android:layout_width="344dp"
+        android:id="@+id/etMonthDropDown"
+        android:layout_width="104dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="#ebebeb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEthnicity" />
+        app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"
+        app:layout_constraintStart_toEndOf="@+id/etDayDropDown"
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
     <TextView
-        android:id="@+id/etEthnicity2"
-        android:layout_width="344dp"
+        android:id="@+id/etYearDropDown"
+        android:layout_width="100dp"
         android:layout_height="30dp"
-        android:background="#ebebeb"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="520dp" />
-
-    <TextView
-        android:id="@+id/etGender"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="#ebebeb"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+
+    <TextView
+        android:id="@+id/etDayDropDown"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:background="#ebebeb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGender" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
     <TextView
         android:id="@+id/etCondition"
@@ -162,26 +160,57 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="#ebebeb"
+        android:textColor="@color/co"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHospital" />
 
-    <Spinner
-        android:id="@+id/genderSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGender" />
+
+
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:entries="@array/gender_array"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGender" />
 
     <Spinner
         android:id="@+id/ethnicitySpinner"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEthnicity" />
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/etMonthDropDown"
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+
+    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/etYearDropDown"
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEthnicity" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDoB" />
 
 </android.support.constraint.ConstraintLayout>
