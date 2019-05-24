@@ -18,9 +18,17 @@
     <string name="explain_your_condition">Explain Your Condition:</string>
     <string name="button">Button</string>
     <string name="choose_picture_from_file">Choose Picture From File</string>
-    <string name="submit">Submit</string>
     <string name="take_a_picture">Take a Picture</string>
     <string name="picture">Picture</string>
+    <string name="transition">transition</string>
+    <string name="condition">condition</string>
+    <string name="calendar">calendar</string>
+    <string name="mailtracker">mailtracker</string>
+    <string name="diettracker">diettracker</string>
+    <string name="editaboutme">editaboutme</string>
+    <string name="editmycondition">editmycondition</string>
+    <string name="editmymedication">editmymedication</string>
+    <string name="editprofilepicture">editProfilePicture</string>
 
     <string-array name="gender_array">
         <item>Male</item>

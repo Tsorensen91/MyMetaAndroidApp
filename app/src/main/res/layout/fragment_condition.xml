@@ -32,7 +32,7 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Picture:" />
+        />
 
     <TextView
         android:id="@+id/tvAboutTitle"
@@ -42,13 +42,13 @@
         android:layout_marginTop="46dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editProfilePicture"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="About:" />
+        android:text="About:" />
 
     <TextView
         android:id="@+id/tvSymptomsTitle"
@@ -58,13 +58,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAbout"
-        tools:text="My Symptoms:" />
+        android:text="My Condition:" />
 
     <TextView
         android:id="@+id/tvSymptomsTitle2"
@@ -74,13 +74,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/boxpink"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSymptoms"
-        tools:text="My Medication:" />
+        android:text="My Medication:" />
 
     <ImageButton
         android:id="@+id/editProfilePicture"
