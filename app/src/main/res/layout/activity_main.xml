@@ -14,6 +14,14 @@
         android:minHeight="?android:attr/actionBarSize"
         android:elevation="4dp">
 
+        <android.support.v7.widget.AppCompatImageButton android:title="backbutton"
+            android:id="@+id/backbutton"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:background="@drawable/ic_edit_regular"
+            app:showAsAction="ifRoom"
+            />
+
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"

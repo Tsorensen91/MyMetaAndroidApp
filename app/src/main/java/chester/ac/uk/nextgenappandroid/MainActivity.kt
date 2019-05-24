@@ -1,5 +1,6 @@
 package chester.ac.uk.nextgenappandroid
 
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_condition.*
 import kotlinx.android.synthetic.main.fragment_transition_tracker.*
@@ -47,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             fragmentHide(list[x])
         }
 
+        backbutton.visibility = View.INVISIBLE
+
         fragmentSwap(getString(R.string.calendar))
 
         navigation.selectedItemId = R.id.calendarButton
@@ -54,23 +58,33 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.transitionButton -> {
                     fragmentSwap(getString(R.string.transition))
+                    backbutton.visibility = View.INVISIBLE
                 }
 
                 R.id.conditionButton -> {
                     fragmentSwap(getString(R.string.condition))
+                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.calendarButton -> {
                     fragmentSwap(getString(R.string.calendar))
+                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.mailtrackerButton -> {
                     fragmentSwap(getString(R.string.mailtracker))
+                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.diettrackerButton -> {
                     fragmentSwap(getString(R.string.diettracker))
+                    backbutton.visibility = View.INVISIBLE
                 }
             }
             true
         }
+
+        backbutton.setOnClickListener {
+            onBackPressed()
+        }
+
 
     }
 
@@ -79,48 +93,100 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        when (activeFragment) {
+            fragment1 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
+                activeFragment = fragment3
+            }
+            fragment2 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
+                activeFragment = fragment3
+            }
+            fragment3 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
+                activeFragment = fragment3
+            }
+            fragment4 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
+                activeFragment = fragment3
+            }
+            fragment5 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
+                activeFragment = fragment3
+            }
+            fragment6 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
+                activeFragment = fragment2
+                backbutton.visibility = View.INVISIBLE
+            }
+            fragment7 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
+                activeFragment = fragment2
+                backbutton.visibility = View.INVISIBLE
+            }
+            fragment8 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
+                activeFragment = fragment2
+                backbutton.visibility = View.INVISIBLE
+            }
+            fragment9 -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
+                activeFragment = fragment2
+                backbutton.visibility = View.INVISIBLE
+            }
+        }
+    }
+
     //swaps visible fragment
     fun fragmentSwap (fragment: String) {
         when (fragment) {
             getString(R.string.transition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment1).commit()
                 activeFragment = fragment1
+                backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.condition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
                 activeFragment = fragment2
+                backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.calendar) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
                 activeFragment = fragment3
+                backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.mailtracker) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment4).commit()
                 activeFragment = fragment4
+                backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.diettracker) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment5).commit()
                 activeFragment = fragment5
+                backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.editaboutme) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment6).addToBackStack("tag").commit()
                 activeFragment = fragment6
+                backbutton.visibility = View.VISIBLE
             }
             getString(R.string.editmycondition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment7).addToBackStack("tag").commit()
                 activeFragment = fragment7
+                backbutton.visibility = View.VISIBLE
             }
             getString(R.string.editmymedication) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment8).addToBackStack("tag").commit()
                 activeFragment = fragment8
+                backbutton.visibility = View.VISIBLE
             }
             getString(R.string.editprofilepicture) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment9).addToBackStack("tag").commit()
                 activeFragment = fragment9
+                backbutton.visibility = View.VISIBLE
             }
-
-
-
         }
 
     }

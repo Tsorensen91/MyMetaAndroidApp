@@ -28,6 +28,16 @@ class ConditionFragment : Fragment() {
         editAboutMe.setOnClickListener(){
             onButtonClicked(editAboutMe)
         }
+        editMySymptoms.setOnClickListener(){
+            onButtonClicked(editMySymptoms)
+        }
+        editMyMedication.setOnClickListener(){
+            onButtonClicked(editMyMedication)
+        }
+        editProfilePicture.setOnClickListener(){
+            onButtonClicked(editProfilePicture)
+        }
+
     }
 
 
