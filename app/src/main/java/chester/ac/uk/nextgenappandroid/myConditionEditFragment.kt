@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class myMedicationFragment : Fragment() {
+import chester.ac.uk.nextgenappandroid.R
+
+class myConditionEditFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_medication, container, false)
+        return inflater.inflate(R.layout.fragment_my_condition, container, false)
     }
 
 
