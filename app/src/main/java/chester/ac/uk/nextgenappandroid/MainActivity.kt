@@ -14,13 +14,16 @@ import kotlinx.android.synthetic.main.fragment_transition_tracker.*
 
 class MainActivity : AppCompatActivity() {
 
+    var list = mutableListOf<Fragment>()
+    var activeFragment:Fragment = CalendarFragment()
     val fragment1 = TransitionTrackerFragment()
     val fragment2 = ConditionFragment()
     val fragment3 = CalendarFragment()
     val fragment4 = MailtrackerFragment()
     val fragment5 = DiettrackerFragment()
     val fragment6 = ConditionEditAbout()
-    var activeFragment:Fragment = fragment3
+    val fragment7 = myConditionFragment()
+    val fragment8 = myMedicationFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,38 +31,40 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment1).hide(fragment1).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment2).hide(fragment2).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment4).hide(fragment4).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment5).hide(fragment5).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment6).hide(fragment6).commit()
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment3).commit()
+        list.add(fragment1)
+        list.add(fragment2)
+        list.add(fragment3)
+        list.add(fragment4)
+        list.add(fragment5)
+        list.add(fragment6)
+        list.add(fragment7)
+        list.add(fragment8)
+
+        for (x in 0 until list.size) {
+            fragmentHide(list[x])
+        }
+
+        fragmentSwap(fragment3)
 
         navigation.selectedItemId = R.id.calendarButton
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.transitionButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment1).commit()
-                    activeFragment = fragment1
+                    fragmentSwap(fragment1)
                 }
 
                 R.id.conditionButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                    activeFragment = fragment2
+                    fragmentSwap(fragment2)
                 }
                 R.id.calendarButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                    activeFragment = fragment3
+                    fragmentSwap(fragment3)
                 }
                 R.id.mailtrackerButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment6).commit()
-                    activeFragment = fragment6
+                    fragmentSwap(fragment4)
                 }
                 R.id.diettrackerButton -> {
-                    supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment5).commit()
-                    activeFragment = fragment5
+                    fragmentSwap(fragment5)
                 }
-
             }
             true
         }
@@ -74,6 +79,10 @@ class MainActivity : AppCompatActivity() {
     fun fragmentSwap (fragment: Fragment) {
         supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
         activeFragment = fragment
+    }
+
+    fun fragmentHide (fragment: Fragment) {
+        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment).hide(fragment).commit()
     }
 
 

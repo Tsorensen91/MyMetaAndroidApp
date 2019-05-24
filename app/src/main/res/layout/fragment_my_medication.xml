@@ -15,11 +15,11 @@
         android:layout_marginEnd="20dp"
         android:background="@color/colorMagenta"
         android:textColor="@color/colorWhite"
-        android:gravity="center_vertical"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="What Medication Do You Take:" />
+        android:text="What Medication Do You Take:" />
 
     <EditText
         android:id="@+id/etMedication"
@@ -45,7 +45,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="148dp"
         android:background="@color/colorTeal"
-        android:text="@string/button"
+        android:text="@string/submit"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
