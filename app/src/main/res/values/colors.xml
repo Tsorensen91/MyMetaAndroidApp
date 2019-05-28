@@ -5,8 +5,8 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorMagenta">#b81570</color>
     <color name="colorTeal">#01b0ad</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorGrey">#c0c0c0</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#C0C0C0</color>
     <color name="colorLightGrey">#ebebeb</color>
 
 

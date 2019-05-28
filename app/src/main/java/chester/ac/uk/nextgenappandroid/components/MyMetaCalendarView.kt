@@ -3,16 +3,17 @@ package chester.ac.uk.nextgenappandroid.components
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import java.time.YearMonth
 import java.util.*
 
-class MyMetaCalendarView(context: Context, attrs: AttributeSet): View(context, attrs) {
+class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     private val calendar = Calendar.getInstance()
     private var weeksInMonth = 0
 
-    private var cells = mutableListOf<RectF>()
+    private var cells = Array(35) { RectF(0f, 0f, 0f, 0f) }
 
     private val rectPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
@@ -32,37 +33,45 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet): View(context, a
         weeksInMonth = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH)
     }
 
-    override fun onFinishInflate() {
-        super.onFinishInflate()
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
+
+        val cellWidth = measuredWidth.toFloat() / 7.0f
+        val cellHeight = measuredHeight.toFloat() / weeksInMonth.toFloat()
+
+        for (y in 0 until weeksInMonth) {
+            for (x in 0 until 7) {
+
+                val index = x + (y * 7)
+                val rectX = x * cellWidth
+                val rectY = y * cellHeight
+                val rectWidth = rectX + cellWidth
+                val rectHeight = rectY + cellHeight
+
+                cells[index].left = rectX
+                cells[index].top = rectY
+                cells[index].right = rectWidth
+                cells[index].bottom = rectHeight
+            }
+        }
 
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        val cellWidth = width.toFloat() / 7.0f
-        val cellHeight = height.toFloat() / weeksInMonth.toFloat()
-
-        for(y in 0 until weeksInMonth){
-            for(x in 0 until 7){
-
-                val rectX = x * cellWidth
-                val rectY = y * cellHeight
-                val rectWidth = rectX + cellWidth
-                val rectHeight = rectY + cellHeight
-                cells.add(RectF(rectX, rectY, rectWidth,rectHeight))
-            }
-        }
-
         canvas?.apply {
             for (i in 0 until cells.size) {
+                //Render cells
                 canvas.drawRect(cells[i], rectPaint)
 
-                canvas.drawText((i + 1).toString(), cells[i].left  + 20, cells[i].top + 30, textPaint)
+                //Render day number
+                canvas.drawText((i + 1).toString(), cells[i].left + 20, cells[i].top + 30, textPaint)
             }
         }
-        cells.clear()
     }
+
 
 }
