@@ -20,6 +20,13 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet): View(context, a
         strokeWidth = 1.5f
     }
 
+    private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.BLACK
+        style = Paint.Style.FILL
+        textSize = 25f
+    }
+
+
     init {
         calendar.set(2019, Calendar.MAY, 1)
         weeksInMonth = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH)
@@ -37,8 +44,9 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet): View(context, a
         val cellWidth = width.toFloat() / 7.0f
         val cellHeight = height.toFloat() / weeksInMonth.toFloat()
 
-        for(x in 0 until 7){
-            for(y in 0 until weeksInMonth){
+        for(y in 0 until weeksInMonth){
+            for(x in 0 until 7){
+
                 val rectX = x * cellWidth
                 val rectY = y * cellHeight
                 val rectWidth = rectX + cellWidth
@@ -48,11 +56,12 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet): View(context, a
         }
 
         canvas?.apply {
-            for(i in 0 until cells.size) {
+            for (i in 0 until cells.size) {
                 canvas.drawRect(cells[i], rectPaint)
+
+                canvas.drawText((i + 1).toString(), cells[i].left  + 20, cells[i].top + 30, textPaint)
             }
         }
-
         cells.clear()
     }
 

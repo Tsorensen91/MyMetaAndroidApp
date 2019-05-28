@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tvEnterName"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/tvGender"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -42,7 +42,7 @@
     <TextView
         android:id="@+id/tvCondition"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -58,7 +58,7 @@
     <TextView
         android:id="@+id/tvHospital"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -74,7 +74,7 @@
     <TextView
         android:id="@+id/tvEthnicity"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -90,7 +90,7 @@
     <TextView
         android:id="@+id/tvDoB"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ethnicitySpinner"
         android:text="Enter Your Date of Birth" />
 
-    <TextView
+    <EditText
         android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -143,7 +143,7 @@
         <!--app:layout_constraintStart_toStartOf="parent"-->
         <!--app:layout_constraintTop_toBottomOf="@+id/tvDoB" />-->
 
-    <TextView
+    <EditText
         android:id="@+id/etCondition"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -154,7 +154,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCondition" />
 
-    <TextView
+    <EditText
         android:id="@+id/etHospital"
         android:layout_width="0dp"
         android:layout_height="30dp"

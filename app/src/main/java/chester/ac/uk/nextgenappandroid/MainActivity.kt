@@ -1,19 +1,13 @@
 package chester.ac.uk.nextgenappandroid
 
-import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_condition.*
-import kotlinx.android.synthetic.main.fragment_transition_tracker.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,30 +45,30 @@ class MainActivity : AppCompatActivity() {
 
         backbutton.visibility = View.INVISIBLE
 
-        fragmentSwap(getString(R.string.calendar))
+        fragmentSwap(getString(R.string.calendar),"")
 
         navigation.selectedItemId = R.id.calendarButton
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.transitionButton -> {
-                    fragmentSwap(getString(R.string.transition))
+                    fragmentSwap(getString(R.string.transition),"")
                     backbutton.visibility = View.INVISIBLE
                 }
 
                 R.id.conditionButton -> {
-                    fragmentSwap(getString(R.string.condition))
+                    fragmentSwap(getString(R.string.condition),"")
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.calendarButton -> {
-                    fragmentSwap(getString(R.string.calendar))
+                    fragmentSwap(getString(R.string.calendar),"")
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.mailtrackerButton -> {
-                    fragmentSwap(getString(R.string.mailtracker))
+                    fragmentSwap(getString(R.string.mailtracker),"")
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.diettrackerButton -> {
-                    fragmentSwap(getString(R.string.diettracker))
+                    fragmentSwap(getString(R.string.diettracker),"")
                     backbutton.visibility = View.INVISIBLE
                 }
             }
@@ -140,7 +134,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //swaps visible fragment
-    fun fragmentSwap (fragment: String) {
+    fun fragmentSwap (fragment: String, info: String) {
         when (fragment) {
             getString(R.string.transition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment1).commit()
@@ -149,8 +143,11 @@ class MainActivity : AppCompatActivity() {
             }
             getString(R.string.condition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                activeFragment = fragment2
                 backbutton.visibility = View.INVISIBLE
+                if (activeFragment == fragment6) {
+                    tvAbout.text = info
+                }
+                activeFragment = fragment2
             }
             getString(R.string.calendar) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
@@ -171,6 +168,7 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment6).addToBackStack("tag").commit()
                 activeFragment = fragment6
                 backbutton.visibility = View.VISIBLE
+
             }
             getString(R.string.editmycondition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment7).addToBackStack("tag").commit()

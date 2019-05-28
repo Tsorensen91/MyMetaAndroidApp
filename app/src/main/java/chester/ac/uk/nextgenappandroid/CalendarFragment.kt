@@ -1,6 +1,7 @@
 package chester.ac.uk.nextgenappandroid
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -22,28 +23,28 @@ class CalendarFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
+
+
         updateCalendar(sdf.format(calendar.time))
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
+
     fun updateCalendar(events: String) {
-
-
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         var monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2
 
-
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell)
-
 
         while (cells.size < daysInMonth ){
             cells.add(calendar.time)
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
 
-        //calendar_grid.adapter = CalendarAdapter( getContext(), cells, events)
-
-        //date_display_date.setText(sdf.format(calendar.time))
+//        calendar_grid.adapter = CalendarAdapter( getContext(), cells, events)
+//
+//        date_display_date.setText(sdf.format(calendar.time))
 
 
     }
