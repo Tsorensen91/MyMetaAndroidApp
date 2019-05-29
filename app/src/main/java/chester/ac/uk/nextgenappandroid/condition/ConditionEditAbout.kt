@@ -1,18 +1,16 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.condition
 
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import kotlinx.android.synthetic.main.fragment_condition.*
+import chester.ac.uk.nextgenappandroid.MainActivity
+import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
 
 

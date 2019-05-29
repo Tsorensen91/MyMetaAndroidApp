@@ -1,4 +1,4 @@
-package chester.ac.uk.nextgenappandroid.components
+package chester.ac.uk.nextgenappandroid.mail
 
 class MailItem(val name: String, var count: Int) {
 

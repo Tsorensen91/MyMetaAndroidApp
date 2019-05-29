@@ -1,16 +1,16 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.condition
 
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import chester.ac.uk.nextgenappandroid.MainActivity
+import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_condition.*
-import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
 
 
 class ConditionFragment : Fragment() {
@@ -50,7 +50,7 @@ class ConditionFragment : Fragment() {
             (activity as MainActivity).fragmentSwap(getString(R.string.editaboutme), "")
         } else if (button.id == R.id.editMySymptoms) {
             (activity as MainActivity).fragmentSwap(getString(R.string.editmycondition), "")
-        } else if (button.id ==R.id.editMyMedication) {
+        } else if (button.id == R.id.editMyMedication) {
             (activity as MainActivity).fragmentSwap(getString(R.string.editmymedication), "")
         } else if (button.id == R.id.editProfilePicture) {
             (activity as MainActivity).fragmentSwap(getString(R.string.editprofilepicture), "")

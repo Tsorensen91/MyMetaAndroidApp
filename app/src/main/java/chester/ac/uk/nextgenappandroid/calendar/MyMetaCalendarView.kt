@@ -1,11 +1,9 @@
-package chester.ac.uk.nextgenappandroid.components
+package chester.ac.uk.nextgenappandroid.calendar
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
-import java.time.YearMonth
 import java.util.*
 
 class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, attrs) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarFragment">
+    tools:context=".calendar.CalendarFragment">
 
 
     <View
@@ -89,7 +89,7 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
-    <chester.ac.uk.nextgenappandroid.components.MyMetaCalendarView
+    <chester.ac.uk.nextgenappandroid.calendar.MyMetaCalendarView
         android:id="@+id/myMetaCalendarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

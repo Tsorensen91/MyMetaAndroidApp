@@ -1,13 +1,13 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.transition
 
-import android.opengl.Visibility
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.card_layout.view.*
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class TransitionRecyclerAdapter : RecyclerView.Adapter<TransitionRecyclerAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return 1 else return 2;

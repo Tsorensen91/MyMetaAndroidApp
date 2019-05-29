@@ -1,4 +1,4 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.condition
 
 
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.diet
 
 
 import android.os.Bundle
@@ -8,13 +8,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.R
 import chester.ac.uk.nextgenappandroid.adapters.DietTrackerAdapter
-import kotlinx.android.synthetic.main.fragment_diettracker.*
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.android.synthetic.main.fragment_diet_tracker.*
 
 
-class DiettrackerFragment : Fragment() {
+class DietTrackerFragment : Fragment() {
 
 
 
@@ -24,7 +23,7 @@ class DiettrackerFragment : Fragment() {
         // Inflate the layout for this fragment
 
         layoutManager = LinearLayoutManager(context)
-        return inflater.inflate(R.layout.fragment_diettracker, container, false)
+        return inflater.inflate(R.layout.fragment_diet_tracker, container, false)
 
         rvDietTracker.layoutManager = layoutManager
 

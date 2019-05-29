@@ -5,6 +5,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.View
+import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
+import chester.ac.uk.nextgenappandroid.condition.*
+import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
+import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
+import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_condition.*
 
@@ -13,15 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     var list = mutableListOf<Fragment>()
     var activeFragment:Fragment = CalendarFragment()
-    val fragment1 = TransitionTrackerFragment()
-    val fragment2 = ConditionFragment()
-    val fragment3 = CalendarFragment()
-    val fragment4 = MailtrackerFragment()
-    val fragment5 = DiettrackerFragment()
-    val fragment6 = ConditionEditAbout()
-    val fragment7 = MyConditionEditFragment()
-    val fragment8 = MyMedicationEditFragment()
-    val fragment9 = MyPictureEditFragment()
+    val transitionTrackerFragment = TransitionTrackerFragment()
+    val conditionFragment = ConditionFragment()
+    val calendarFragment = CalendarFragment()
+    val mailTrackerFragment = MailTrackerFragment()
+    val dietTrackerFragment = DietTrackerFragment()
+    val conditionEditAbout = ConditionEditAbout()
+    val myConditionEditFragment = MyConditionEditFragment()
+    val myMedicationEditFragment = MyMedicationEditFragment()
+    val myPictureEditFragment = MyPictureEditFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +34,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        list.add(fragment1)
-        list.add(fragment2)
-        list.add(fragment3)
-        list.add(fragment4)
-        list.add(fragment5)
-        list.add(fragment6)
-        list.add(fragment7)
-        list.add(fragment8)
-        list.add(fragment9)
+        list.add(transitionTrackerFragment)
+        list.add(conditionFragment)
+        list.add(calendarFragment)
+        list.add(mailTrackerFragment)
+        list.add(dietTrackerFragment)
+        list.add(conditionEditAbout)
+        list.add(myConditionEditFragment)
+        list.add(myMedicationEditFragment)
+        list.add(myPictureEditFragment)
 
         for (x in 0 until list.size) {
             fragmentHide(list[x])
@@ -90,44 +95,44 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         when (activeFragment) {
-            fragment1 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+            transitionTrackerFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
             }
-            fragment2 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+            conditionFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
             }
-            fragment3 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+            calendarFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
             }
-            fragment4 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+            mailTrackerFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
             }
-            fragment5 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+            dietTrackerFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
             }
-            fragment6 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                activeFragment = fragment2
+            conditionEditAbout -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
+                activeFragment = conditionFragment
                 backbutton.visibility = View.INVISIBLE
             }
-            fragment7 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                activeFragment = fragment2
+            myConditionEditFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
+                activeFragment = conditionFragment
                 backbutton.visibility = View.INVISIBLE
             }
-            fragment8 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                activeFragment = fragment2
+            myMedicationEditFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
+                activeFragment = conditionFragment
                 backbutton.visibility = View.INVISIBLE
             }
-            fragment9 -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
-                activeFragment = fragment2
+            myPictureEditFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
+                activeFragment = conditionFragment
                 backbutton.visibility = View.INVISIBLE
             }
         }
@@ -137,52 +142,52 @@ class MainActivity : AppCompatActivity() {
     fun fragmentSwap (fragment: String, info: String) {
         when (fragment) {
             getString(R.string.transition) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment1).commit()
-                activeFragment = fragment1
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(transitionTrackerFragment).commit()
+                activeFragment = transitionTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.condition) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment2).commit()
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
                 backbutton.visibility = View.INVISIBLE
-                if (activeFragment == fragment6) {
+                if (activeFragment == conditionEditAbout) {
                     tvAbout.text = info
                 }
-                activeFragment = fragment2
+                activeFragment = conditionFragment
             }
             getString(R.string.calendar) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment3).commit()
-                activeFragment = fragment3
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(calendarFragment).commit()
+                activeFragment = calendarFragment
                 backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.mailtracker) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment4).commit()
-                activeFragment = fragment4
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(mailTrackerFragment).commit()
+                activeFragment = mailTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.diettracker) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment5).commit()
-                activeFragment = fragment5
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerFragment).commit()
+                activeFragment = dietTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
             getString(R.string.editaboutme) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment6).addToBackStack("tag").commit()
-                activeFragment = fragment6
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionEditAbout).addToBackStack("tag").commit()
+                activeFragment = conditionEditAbout
                 backbutton.visibility = View.VISIBLE
 
             }
             getString(R.string.editmycondition) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment7).addToBackStack("tag").commit()
-                activeFragment = fragment7
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(myConditionEditFragment).addToBackStack("tag").commit()
+                activeFragment = myConditionEditFragment
                 backbutton.visibility = View.VISIBLE
             }
             getString(R.string.editmymedication) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment8).addToBackStack("tag").commit()
-                activeFragment = fragment8
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(myMedicationEditFragment).addToBackStack("tag").commit()
+                activeFragment = myMedicationEditFragment
                 backbutton.visibility = View.VISIBLE
             }
             getString(R.string.editprofilepicture) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment9).addToBackStack("tag").commit()
-                activeFragment = fragment9
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(myPictureEditFragment).addToBackStack("tag").commit()
+                activeFragment = myPictureEditFragment
                 backbutton.visibility = View.VISIBLE
             }
         }

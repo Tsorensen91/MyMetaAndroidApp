@@ -1,4 +1,4 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.mail
 
 
 import android.os.Bundle
@@ -8,31 +8,31 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_transition_tracker.*
+import chester.ac.uk.nextgenappandroid.R
+import kotlinx.android.synthetic.main.fragment_mail_tracker.*
 
-class TransitionTrackerFragment : Fragment() {
+class MailTrackerFragment : Fragment() {
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    lateinit var adapter: RecyclerAdapter
+    lateinit var adapter: MailRecyclerAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_transition_tracker, container, false)
+        return inflater.inflate(R.layout.fragment_mail_tracker, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         layoutManager = LinearLayoutManager(activity)
-        rvTransitionTracker.layoutManager = layoutManager
-        adapter = RecyclerAdapter()
-        rvTransitionTracker.adapter = adapter
+        rvMailTracker.layoutManager = layoutManager
+        adapter = MailRecyclerAdapter()
+        rvMailTracker.adapter = adapter
+
     }
-
-
 
 
 }

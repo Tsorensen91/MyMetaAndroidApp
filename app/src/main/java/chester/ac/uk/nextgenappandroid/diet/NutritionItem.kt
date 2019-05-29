@@ -1,4 +1,4 @@
-package chester.ac.uk.nextgenappandroid
+package chester.ac.uk.nextgenappandroid.diet
 
 enum class Nutrient {
     FAT,
