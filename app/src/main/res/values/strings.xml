@@ -29,6 +29,7 @@
     <string name="editmycondition">editmycondition</string>
     <string name="editmymedication">editmymedication</string>
     <string name="editprofilepicture">editProfilePicture</string>
+    <string name="tvTitleBox">TextView</string>
 
     <string-array name="gender_array">
         <item>Male</item>

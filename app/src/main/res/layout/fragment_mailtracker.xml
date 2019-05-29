@@ -6,9 +6,8 @@
     tools:context=".MailtrackerFragment">
 
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvMailTracker"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello mailtracker fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>
