@@ -3,41 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/tvTitleBox"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="16dp"
-        android:background="#b51d6f"
-        android:text="@string/tvTitleBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tvFrom"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="14dp"
         android:background="#ebebeb"
         android:text="@string/tvTitleBox"
         app:layout_constraintEnd_toStartOf="@+id/tvAppointment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleBox" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvAppointment"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="14dp"
         android:background="#ebebeb"
         android:text="@string/tvTitleBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvFrom"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleBox" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

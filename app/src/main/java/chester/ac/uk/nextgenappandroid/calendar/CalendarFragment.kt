@@ -7,44 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.R
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.fragment_calendar.*
 
 
 class CalendarFragment : Fragment() {
 
-    var sdf = SimpleDateFormat("EEEE,d MMM,yyyy")
-    var cells = ArrayList<Date>()
-    var calendar : Calendar = Calendar.getInstance()
-    var daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
 
-
-
-        updateCalendar(sdf.format(calendar.time))
         return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-    fun updateCalendar(events: String) {
-        calendar.set(Calendar.DAY_OF_MONTH, 1)
-        var monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2
+        imPrevMonth.setOnClickListener {
+            my_meta_calendar_view.decrementMonth()
 
-        calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell)
-
-        while (cells.size < daysInMonth ){
-            cells.add(calendar.time)
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
+            tvDate.text = my_meta_calendar_view.calendarDate.toString()
         }
 
-//        calendar_grid.adapter = CalendarAdapter( getContext(), cells, events)
-//
-//        date_display_date.setText(sdf.format(calendar.time))
+        imNextMonth.setOnClickListener {
+            my_meta_calendar_view.incrementMonth()
 
+            tvDate.text = my_meta_calendar_view.calendarDate.toString()
+        }
 
     }
 

@@ -1,21 +1,50 @@
 package chester.ac.uk.nextgenappandroid.calendar
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
+import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.view.View
 import java.util.*
 
+class CalRect(var x: Float, var y: Float, var width: Float, var height: Float) {
+
+    var date: Date? = null
+
+    fun getRectF(): RectF {
+        return RectF(x, y, x + width, y + height);
+    }
+}
+
 class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private val calendar = Calendar.getInstance()
+    private val calendar = GregorianCalendar.getInstance()
+    private var currentDate: Date = calendar.time
+    lateinit var calendarDate: Date
+    private lateinit var startDateOfMonth: Date
     private var weeksInMonth = 0
+    private var weekDayOfFirstDay = 0
 
-    private var cells = Array(35) { RectF(0f, 0f, 0f, 0f) }
+    private lateinit var cells: Array<CalRect>
 
     private val rectPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
         style = Paint.Style.STROKE
+        strokeWidth = 1.5f
+    }
+
+    private val rectFillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.GRAY
+        style = Paint.Style.FILL_AND_STROKE
+        strokeWidth = 1.5f
+    }
+
+    private val rectFillCurrentDatePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.BLUE
+        style = Paint.Style.FILL
         strokeWidth = 1.5f
     }
 
@@ -27,8 +56,30 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
 
 
     init {
-        calendar.set(2019, Calendar.MAY, 1)
-        weeksInMonth = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH)
+        updateCalendar()
+    }
+
+    //Lots of plus and minus 1's and 2' (Just go with it)
+    private fun updateCalendar() {
+        calendarDate = calendar.time
+
+        weekDayOfFirstDay = calendar.get(Calendar.DAY_OF_WEEK) - 2 // -2 because the week starts on a Sunday
+        val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+        weeksInMonth = 6
+        cells = Array(weeksInMonth * 7) { CalRect(0f, 0f, 0f, 0f) }
+
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        startDateOfMonth = calendar.time
+
+        for (i in 0 until cells.size) {
+
+            if (i in weekDayOfFirstDay..(daysInMonth + 1)) {
+                cells[i].date = startDateOfMonth
+                calendar.add(Calendar.DATE, 1)
+                startDateOfMonth = calendar.time
+            }
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -45,13 +96,11 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
                 val index = x + (y * 7)
                 val rectX = x * cellWidth
                 val rectY = y * cellHeight
-                val rectWidth = rectX + cellWidth
-                val rectHeight = rectY + cellHeight
 
-                cells[index].left = rectX
-                cells[index].top = rectY
-                cells[index].right = rectWidth
-                cells[index].bottom = rectHeight
+                cells[index].x = rectX
+                cells[index].y = rectY
+                cells[index].width = cellWidth
+                cells[index].height = cellHeight
             }
         }
 
@@ -62,14 +111,38 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
 
         canvas?.apply {
             for (i in 0 until cells.size) {
-                //Render cells
-                canvas.drawRect(cells[i], rectPaint)
 
-                //Render day number
-                canvas.drawText((i + 1).toString(), cells[i].left + 20, cells[i].top + 30, textPaint)
+                //Render cells
+                if (cells[i].date != null) {
+                    canvas.drawRect(cells[i].getRectF(), rectPaint)
+
+                    val day = (DateFormat.format("d", cells[i].date) as String)
+                    canvas.drawText(day, cells[i].x + 20, cells[i].y + 30, textPaint)
+
+                    if (cells[i].date == currentDate) {
+                        canvas.drawRect(cells[i].getRectF(), rectFillCurrentDatePaint)
+                    }
+                } else {
+                    canvas.drawRect(cells[i].getRectF(), rectFillPaint)
+                    canvas.drawRect(cells[i].getRectF(), rectPaint)
+                }
             }
         }
     }
 
+    fun incrementMonth() {
+        calendar.add(Calendar.MONTH, 1)
+        updateCalendar()
 
+        requestLayout()
+        invalidate()
+    }
+
+    fun decrementMonth() {
+        calendar.add(Calendar.MONTH, -1)
+        updateCalendar()
+
+        requestLayout()
+        invalidate()
+    }
 }

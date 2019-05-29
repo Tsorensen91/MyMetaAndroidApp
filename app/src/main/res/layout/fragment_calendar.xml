@@ -12,10 +12,11 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="14dp"
         android:background="@drawable/boxpink"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +91,7 @@
     </LinearLayout>
 
     <chester.ac.uk.nextgenappandroid.calendar.MyMetaCalendarView
-        android:id="@+id/myMetaCalendarView"
+        android:id="@+id/my_meta_calendar_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
@@ -111,7 +112,7 @@
         android:background="@drawable/boxpink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myMetaCalendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/my_meta_calendar_view" />
 
     <TextView
         android:id="@+id/tvUpcomingEvents"
@@ -142,28 +143,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/ic_edit_regular"
         app:layout_constraintBottom_toTopOf="@+id/calendar_header"
-        app:layout_constraintEnd_toEndOf="@+id/dateHeader"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvDatePicker"
-        app:layout_constraintTop_toTopOf="@+id/dateHeader" />
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toTopOf="@+id/dateHeader"
+        app:layout_constraintVertical_bias="0.51" />
 
     <ImageView
         android:id="@+id/imPrevMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/ic_edit_regular"
         app:layout_constraintBottom_toTopOf="@+id/calendar_header"
-        app:layout_constraintEnd_toStartOf="@+id/tvDatePicker"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/dateHeader"
+        app:layout_constraintEnd_toStartOf="@+id/tvDate"
         app:layout_constraintTop_toTopOf="@+id/dateHeader" />
 
     <TextView

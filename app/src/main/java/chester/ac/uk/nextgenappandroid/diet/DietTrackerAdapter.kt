@@ -1,10 +1,9 @@
-package chester.ac.uk.nextgenappandroid.adapters
+package chester.ac.uk.nextgenappandroid.diet
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import chester.ac.uk.nextgenappandroid.diet.NutritionList
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.diet_tracket_card_layout.view.*
 import java.text.SimpleDateFormat
