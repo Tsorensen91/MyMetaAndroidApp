@@ -148,7 +148,7 @@
         app:layout_constraintBottom_toTopOf="@+id/calendar_header"
         app:layout_constraintEnd_toEndOf="@+id/dateHeader"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintStart_toEndOf="@+id/tvDatePicker"
         app:layout_constraintTop_toTopOf="@+id/dateHeader" />
 
     <ImageView
@@ -161,7 +161,7 @@
         android:layout_marginBottom="8dp"
         android:src="@drawable/ic_edit_regular"
         app:layout_constraintBottom_toTopOf="@+id/calendar_header"
-        app:layout_constraintEnd_toStartOf="@+id/tvDate"
+        app:layout_constraintEnd_toStartOf="@+id/tvDatePicker"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/dateHeader"
         app:layout_constraintTop_toTopOf="@+id/dateHeader" />
