@@ -33,6 +33,11 @@ class DietTrackerAdapter : RecyclerView.Adapter<DietTrackerAdapter.ViewHolder>()
         cardView.tvNutrition.text = item.toString()
     }
 
+    fun addItem(item: NutritionItem) {
+        list.add(NutritionList(List(list.size)))
+        notifyItemInserted(list.size)
+    }
+
 
     inner class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)
 
