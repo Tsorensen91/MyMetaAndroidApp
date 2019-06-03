@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_mail_tracker.*
 
@@ -32,7 +33,11 @@ class MailTrackerFragment : Fragment() {
         adapter = MailRecyclerAdapter()
         rvMailTracker.adapter = adapter
 
+        imAdd.setOnClickListener {
+            (activity as MainActivity).fragmentSwap(getString(R.string.mailtrackeradd), "")
+        }
     }
+
 
 
 }

@@ -11,6 +11,7 @@ import android.view.View
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
+import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     val myConditionEditFragment = MyConditionEditFragment()
     val myMedicationEditFragment = MyMedicationEditFragment()
     val myPictureEditFragment = MyPictureEditFragment()
+    val mailTrackerAddFragment = MailTrackerAddItem()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         list.add(myConditionEditFragment)
         list.add(myMedicationEditFragment)
         list.add(myPictureEditFragment)
+        list.add(mailTrackerAddFragment)
 
         for (x in 0 until list.size) {
             fragmentHide(list[x])
@@ -138,6 +141,11 @@ class MainActivity : AppCompatActivity() {
                 activeFragment = conditionFragment
                 backbutton.visibility = View.INVISIBLE
             }
+            mailTrackerAddFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(mailTrackerFragment).commit()
+                activeFragment = mailTrackerFragment
+                backbutton.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -201,6 +209,11 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.editprofilepicture) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(myPictureEditFragment).addToBackStack("tag").commit()
                 activeFragment = myPictureEditFragment
+                backbutton.visibility = View.VISIBLE
+            }
+            getString(R.string.mailtrackeradd) -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(mailTrackerAddFragment).addToBackStack("tag").commit()
+                activeFragment = mailTrackerAddFragment
                 backbutton.visibility = View.VISIBLE
             }
         }
