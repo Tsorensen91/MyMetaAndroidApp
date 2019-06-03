@@ -210,21 +210,6 @@ class MainActivity : AppCompatActivity() {
     fun fragmentHide (fragment: Fragment) {
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment).hide(fragment).commit()
     }
-
-    private fun checkCameraHardware(context: Context): Boolean {
-        if (context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)){
-            return true
-        }
-        return false
-    }
-
-    fun getCameraInstance() : Camera?
-    {
-        return try {
-            Camera.open(0)
-        } catch (e : Exception) {
-            null
-        }
-    }
+    
 
 }

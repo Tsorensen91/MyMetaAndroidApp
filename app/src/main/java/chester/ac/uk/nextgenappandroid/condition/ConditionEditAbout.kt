@@ -20,7 +20,6 @@ class ConditionEditAbout : Fragment() {
     private lateinit var adapter: ArrayAdapter<CharSequence>
     var gender = ""
     var ethnicity = ""
-    val aboutMeArray: Array<String> = arrayOf("name", "gender", "condition", "hospital", "ethnicity", "DOBday", "DOBmonth", "DOByear")
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +43,7 @@ class ConditionEditAbout : Fragment() {
             builder.append("Condition: ").append(etCondition.text.toString()).appendln()
             builder.append("Hospital: ").append(etHospital.text.toString()).appendln()
             builder.append("Ethnicity: ").append(ethnicity).appendln()
+            builder.append("Date of Birth: ").append(daySpinner.selectedItem).append(" ").append(monthSpinner.selectedItem).append(" ").append(yearSpinner.selectedItem)
 
 
             (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())

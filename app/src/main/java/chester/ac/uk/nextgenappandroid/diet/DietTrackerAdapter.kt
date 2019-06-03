@@ -23,18 +23,25 @@ class DietTrackerAdapter : RecyclerView.Adapter<DietTrackerAdapter.ViewHolder>()
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size + 1
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
        val cardView = viewHolder.itemView
-        val item = list[position]
-        cardView.tvDatePicker.text = date_n.toString()
-        cardView.tvNutrition.text = item.toString()
+        if (position == 0) {
+            cardView.tvDatePicker.text = "Add new item"
+            cardView.tvNutrition.text = ""
+
+        } else {
+            val item = list[position]
+            cardView.tvDatePicker.text = date_n.toString()
+            cardView.tvNutrition.text = item.toString()
+        }
     }
 
+
     fun addItem(item: NutritionItem) {
-       // list.add(NutritionList(List(list.size)))
+        //list.add(NutritionList(List(list.size)))
         notifyItemInserted(list.size)
     }
 
