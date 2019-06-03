@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDatePicker" />
 
     <ImageButton
-        android:id="@+id/EditButton"
+        android:id="@+id/editButton"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="22dp"
@@ -42,4 +42,5 @@
         android:backgroundTint="@color/colorWhite"
         android:background="@drawable/ic_edit_regular"
         />
+
 </android.support.constraint.ConstraintLayout>
