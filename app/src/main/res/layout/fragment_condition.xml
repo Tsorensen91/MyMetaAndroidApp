@@ -14,10 +14,8 @@
         android:layout_marginStart="20dp"
         android:background="@color/colorLightGrey"
         android:contentDescription="@string/profilePicture"
-        android:src="@drawable/ic_edit_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPictureTitle"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvPictureTitle" />
 
     <TextView
         android:id="@+id/tvPictureTitle"

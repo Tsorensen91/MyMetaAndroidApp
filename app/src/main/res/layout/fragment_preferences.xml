@@ -11,12 +11,11 @@
         android:id="@+id/notificationSwitch"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/colorMagenta"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/SCBSwitch"/>
 
 
     <TextView
@@ -25,8 +24,8 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Notifications:"
         android:gravity="center_vertical"
+        android:text="Notifications:"
         app:layout_constraintEnd_toStartOf="@+id/notificationSwitch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,11 +34,11 @@
         android:id="@+id/measurementsSwitch"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/colorMagenta"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch" />
+        app:layout_constraintTop_toBottomOf="@+id/notificationSwitch"
+        android:theme="@style/SCBSwitch"/>
 
     <TextView
         android:id="@+id/tvMeasurements"
@@ -57,9 +56,9 @@
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="3dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         android:background="@color/colorTeal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,12 +68,12 @@
         android:id="@+id/divider2"
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:background="@color/colorTeal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contactFormButton" />
 
@@ -82,9 +81,9 @@
         android:id="@+id/tvContactUs"
         android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
         android:background="@color/colorMagenta"
         android:gravity="center"
         android:text="Contact Us"
@@ -99,8 +98,8 @@
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Phone:"
         android:gravity="center"
+        android:text="Phone:"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvContactUs" />
@@ -121,8 +120,8 @@
         android:id="@+id/tvOpenDays"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Monday-Friday"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,11 +142,12 @@
         android:id="@+id/contactForm"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="83dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="36dp"
         android:text="Alternatively fill in our form found here:"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
 
@@ -155,13 +155,13 @@
         android:id="@+id/contactFormButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="140dp"
+        android:layout_marginStart="140dp"
         android:background="@color/colorTeal"
         android:text="Contact Form"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contactForm" />
 
@@ -169,14 +169,15 @@
         android:id="@+id/tvUsefulDirectories"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:background="@color/colorMagenta"
-        android:text="Useful Directories"
         android:gravity="center"
+        android:text="Useful Directories"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
@@ -184,12 +185,13 @@
         android:id="@+id/tvDirectory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="179dp"
-        android:text="Eurordis:"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
+        android:text="Eurordis:"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsefulDirectories" />
 
@@ -197,9 +199,9 @@
         android:id="@+id/tvDirectoryDescription"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="106dp"
         android:layout_marginStart="105dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="106dp"
         android:gravity="center"
         android:text="EURORDIS is an alliance of 745 rare disease patient organisations from 65 countries that work together to improve the lives of the 30 million people living with a rare disease in Europe."
         app:layout_constraintEnd_toEndOf="parent"
@@ -210,15 +212,19 @@
         android:id="@+id/eurodisHomepageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="162dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="20dp"
         android:background="@color/colorTeal"
         android:text="Eurodis Homepage"
         android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDirectoryDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDirectoryDescription"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>

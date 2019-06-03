@@ -30,6 +30,7 @@
     <string name="editmymedication">editmymedication</string>
     <string name="editprofilepicture">editProfilePicture</string>
     <string name="mailtrackeradd">mailTrackerAdd</string>
+    <string name="preferencesfragment">preferencesfragment</string>
     <string name="tvTitleBox">TextView</string>
 
     <string-array name="gender_array">

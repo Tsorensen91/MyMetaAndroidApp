@@ -1,11 +1,12 @@
 package chester.ac.uk.nextgenappandroid
 
-import android.content.Context
-import android.content.pm.PackageManager
-import android.hardware.Camera
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.ParcelFileDescriptor
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.View
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
@@ -16,12 +17,15 @@ import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_condition.*
+import java.io.FileDescriptor
 
 
 class MainActivity : AppCompatActivity() {
 
     var list = mutableListOf<Fragment>()
     var activeFragment:Fragment = CalendarFragment()
+    var previousFragment: Fragment? = null
+
     val transitionTrackerFragment = TransitionTrackerFragment()
     val conditionFragment = ConditionFragment()
     val calendarFragment = CalendarFragment()
@@ -32,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     val myMedicationEditFragment = MyMedicationEditFragment()
     val myPictureEditFragment = MyPictureEditFragment()
     val mailTrackerAddFragment = MailTrackerAddItem()
+    val preferencesFragment = FragmentPreferences()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         list.add(myMedicationEditFragment)
         list.add(myPictureEditFragment)
         list.add(mailTrackerAddFragment)
+        list.add(preferencesFragment)
 
         for (x in 0 until list.size) {
             fragmentHide(list[x])
@@ -90,12 +96,11 @@ class MainActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        preferencesButton.setOnClickListener {
+            fragmentSwap(getString(R.string.preferencesfragment), "")
+        }
 
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onBackPressed() {
@@ -146,6 +151,12 @@ class MainActivity : AppCompatActivity() {
                 activeFragment = mailTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
+            preferencesFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(previousFragment ?: calendarFragment).commit()
+                activeFragment = previousFragment ?: calendarFragment
+                preferencesButton.visibility = View.VISIBLE
+                backbutton.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -170,6 +181,14 @@ class MainActivity : AppCompatActivity() {
                     }
                     myMedicationEditFragment -> {
                         tvMedication.text = info
+                    }
+                    myPictureEditFragment-> {
+                        val parcelFileDescriptor: ParcelFileDescriptor = contentResolver.openFileDescriptor(Uri.parse(info), "r")
+                        val fileDescriptor: FileDescriptor = parcelFileDescriptor.fileDescriptor
+                        val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+                        parcelFileDescriptor.close()
+
+                        profilePicture.setImageBitmap(image)
                     }
                 }
 
@@ -214,6 +233,13 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.mailtrackeradd) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(mailTrackerAddFragment).addToBackStack("tag").commit()
                 activeFragment = mailTrackerAddFragment
+                backbutton.visibility = View.VISIBLE
+            }
+            getString(R.string.preferencesfragment) -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(preferencesFragment).addToBackStack("tag").commit()
+                previousFragment = activeFragment
+                activeFragment = preferencesFragment
+                preferencesButton.visibility = View.INVISIBLE
                 backbutton.visibility = View.VISIBLE
             }
         }
