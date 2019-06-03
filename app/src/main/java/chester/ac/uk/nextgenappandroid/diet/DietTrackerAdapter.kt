@@ -34,7 +34,7 @@ class DietTrackerAdapter : RecyclerView.Adapter<DietTrackerAdapter.ViewHolder>()
     }
 
     fun addItem(item: NutritionItem) {
-        list.add(NutritionList(List(list.size)))
+       // list.add(NutritionList(List(list.size)))
         notifyItemInserted(list.size)
     }
 
