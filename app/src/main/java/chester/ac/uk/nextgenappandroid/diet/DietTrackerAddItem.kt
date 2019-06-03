@@ -29,7 +29,6 @@ class DietTrackerAddItem : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-        (activity as MainActivity).fragmentSwap(getString(chester.ac.uk.nextgenappandroid.R.string.diettracker), "")
     }
     private fun onButtonClicked(button: Button) {
         if (button.id == chester.ac.uk.nextgenappandroid.R.id.submitButton) {
