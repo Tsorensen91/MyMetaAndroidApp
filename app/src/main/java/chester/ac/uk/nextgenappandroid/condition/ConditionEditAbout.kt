@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
 class ConditionEditAbout : Fragment() {
 
     private lateinit var adapter: ArrayAdapter<CharSequence>
-    val aboutMeArray : Array<String> = arrayOf("name", "gender", "condition", "hospital", "ethnicity", "DOBday", "DOBmonth", "DOByear")
+    var gender = ""
+    var ethnicity = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,7 +43,7 @@ class ConditionEditAbout : Fragment() {
             }
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = genderSpinner.getItemAtPosition(position).toString()
-                aboutMeArray[1] = selectedItem
+                gender = selectedItem
             }
         }
 
@@ -54,21 +55,21 @@ class ConditionEditAbout : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = ethnicitySpinner.getItemAtPosition(position).toString()
-                aboutMeArray[4] = selectedItem
+                ethnicity = selectedItem
             }
         }
 
-
         submitButton.setOnClickListener{
-            var aboutString = ""
-            aboutMeArray[0] = etName.text.toString()
-            aboutMeArray[2] = etCondition.text.toString()
-            aboutMeArray[3] = etHospital.text.toString()
-            for (x in 0 until aboutMeArray.size){
-                aboutString += aboutMeArray[x]
-                aboutString += " | "
-            }
-            (activity as MainActivity).fragmentSwap(getString(R.string.condition), aboutString)
+            val builder = StringBuilder()
+
+            builder.append("Name: ").append(etName.text.toString()).appendln()
+            builder.append("Gender: ").append(gender).appendln()
+            builder.append("Condition: ").append(etCondition.text.toString()).appendln()
+            builder.append("Hospital: ").append(etHospital.text.toString()).appendln()
+            builder.append("Ethnicity: ").append(ethnicity).appendln()
+
+
+            (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())
         }
     }
 
