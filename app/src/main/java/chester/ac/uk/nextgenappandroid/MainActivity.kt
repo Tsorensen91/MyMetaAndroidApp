@@ -1,5 +1,8 @@
 package chester.ac.uk.nextgenappandroid
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.hardware.Camera
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -157,9 +160,19 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.condition) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionFragment).commit()
                 backbutton.visibility = View.INVISIBLE
-                if (activeFragment == conditionEditAbout) {
-                    tvAbout.text = info
+
+                when (activeFragment){
+                    conditionEditAbout -> {
+                        tvAbout.text = info
+                    }
+                    myConditionEditFragment -> {
+                        tvSymptoms.text = info
+                    }
+                    myMedicationEditFragment -> {
+                        tvMedication.text = info
+                    }
                 }
+
                 activeFragment = conditionFragment
             }
             getString(R.string.calendar) -> {
@@ -211,5 +224,20 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.main_container, fragment).hide(fragment).commit()
     }
 
+    private fun checkCameraHardware(context: Context): Boolean {
+        if (context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            return true
+        }
+        return false
+    }
+
+    fun getCameraInstance() : Camera?
+    {
+        return try {
+            Camera.open(0)
+        } catch (e : Exception) {
+            null
+        }
+    }
 
 }

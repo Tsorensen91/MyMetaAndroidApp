@@ -3,12 +3,12 @@ package chester.ac.uk.nextgenappandroid.condition
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
@@ -18,7 +18,9 @@ import java.util.*
 class ConditionEditAbout : Fragment() {
 
     private lateinit var adapter: ArrayAdapter<CharSequence>
-    val aboutMeArray : Array<String> = arrayOf("name", "gender", "condition", "hospital", "ethnicity", "DOBday", "DOBmonth", "DOByear")
+    var gender = ""
+    var ethnicity = ""
+    val aboutMeArray: Array<String> = arrayOf("name", "gender", "condition", "hospital", "ethnicity", "DOBday", "DOBmonth", "DOByear")
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +35,21 @@ class ConditionEditAbout : Fragment() {
         setupDateAdapters()
         setupArrayAdapters()
 
-        submitButton.setOnClickListener{
-            var aboutString = ""
-            aboutMeArray[0] = etName.text.toString()
-            aboutMeArray[2] = etCondition.text.toString()
-            aboutMeArray[3] = etHospital.text.toString()
-            for (x in 0 until aboutMeArray.size){
-                aboutString += aboutMeArray[x]
-                aboutString += " | "
-            }
-            (activity as MainActivity).fragmentSwap(getString(R.string.condition), aboutString)
+        submitButton.setOnClickListener {
+
+            val builder = StringBuilder()
+
+            builder.append("Name: ").append(etName.text.toString()).appendln()
+            builder.append("Gender: ").append(gender).appendln()
+            builder.append("Condition: ").append(etCondition.text.toString()).appendln()
+            builder.append("Hospital: ").append(etHospital.text.toString()).appendln()
+            builder.append("Ethnicity: ").append(ethnicity).appendln()
+
+
+            (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())
         }
     }
+
 
     private fun setupDateAdapters() {
 
@@ -114,26 +119,29 @@ class ConditionEditAbout : Fragment() {
         adapter = ArrayAdapter.createFromResource(activity!!, R.array.gender_array, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         genderSpinner.adapter = adapter
-        genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
+
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = genderSpinner.getItemAtPosition(position).toString()
-                aboutMeArray[1] = selectedItem
+                gender = selectedItem
             }
         }
 
         adapter = ArrayAdapter.createFromResource(activity!!, R.array.ethnicity_spinner, android.R.layout.simple_spinner_item)
         ethnicitySpinner.adapter = adapter
-        ethnicitySpinner.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
+        ethnicitySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = ethnicitySpinner.getItemAtPosition(position).toString()
-                aboutMeArray[4] = selectedItem
+                ethnicity = selectedItem
             }
         }
-    }
 
+    }
 }
+
+
