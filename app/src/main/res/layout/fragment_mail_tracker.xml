@@ -36,15 +36,15 @@
         android:id="@+id/textView"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="From:"
+        android:layout_marginStart="8dp"
+        android:text="From"
         android:textAlignment="viewStart"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
@@ -53,12 +53,21 @@
         android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:text="Date:"
+        android:text="Date"
         android:textAlignment="viewStart"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+    <ImageButton
+        android:id="@+id/imAdd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
 </android.support.constraint.ConstraintLayout>
