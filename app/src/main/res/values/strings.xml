@@ -25,6 +25,7 @@
     <string name="calendar">calendar</string>
     <string name="mailtracker">mailtracker</string>
     <string name="diettracker">diettracker</string>
+    <string name="diettrackeradd">diettrackeradd</string>
     <string name="editaboutme">editaboutme</string>
     <string name="editmycondition">editmycondition</string>
     <string name="editmymedication">editmymedication</string>
