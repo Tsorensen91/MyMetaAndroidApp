@@ -31,6 +31,11 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
