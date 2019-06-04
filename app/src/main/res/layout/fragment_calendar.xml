@@ -102,6 +102,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendar_header" />
 
+
+
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -168,19 +170,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="May 2019"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/calendar_header"
         app:layout_constraintEnd_toEndOf="@+id/dateHeader"
         app:layout_constraintStart_toStartOf="@+id/dateHeader"
         app:layout_constraintTop_toTopOf="@+id/dateHeader" />
 
-    <!--<GridView-->
-        <!--android:id="@+id/calendar_grid"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:numColumns="7"-->
-        <!--app:layout_constraintTop_toBottomOf="@id/calendar_header"/>-->
+    <GridView
+        android:id="@+id/calendar_grid"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:numColumns="7"
+        app:layout_constraintTop_toBottomOf="@id/calendar_header"/>
 
 
 
