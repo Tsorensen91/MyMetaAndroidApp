@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transition.TransitionTrackerAdd">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorLightGrey"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess">
+
+        <LinearLayout
+            android:id="@+id/transitionTrackerScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tvStepType"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Select Step Type:"
+        android:background="@color/colorMagenta"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTransitionSelectTime"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorMagenta"
+        android:gravity="center"
+        android:text="Select Time and Date:"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stepSpinner" />
+
+    <Spinner
+        android:id="@+id/stepSpinner"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStepType" />
+
+    <Spinner
+        android:id="@+id/hourSpinner"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionSelectTime" />
+
+    <Spinner
+        android:id="@+id/dateSpinner"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintStart_toEndOf="@+id/hourSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionSelectTime" />
+
+    <Spinner
+        android:id="@+id/monthSpinner"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="45dp"
+        app:layout_constraintStart_toEndOf="@+id/dateSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionSelectTime" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionSelectTime" />
+
+    <TextView
+        android:id="@+id/tvAddNotes"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Add Notes:"
+        android:gravity="center"
+        android:background="@color/colorMagenta"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateSpinner" />
+
+    <EditText
+        android:id="@+id/etAddNotes"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorLightGrey"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddNotes" />
+
+    <TextView
+        android:id="@+id/tvTransitionProcess"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Transition Process:"
+        android:background="@color/colorMagenta"
+        android:textColor="@color/colorWhite"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddNotes" />
+
+    <Button
+        android:id="@+id/transitionTrackerSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="162dp"
+        android:background="@color/colorTeal"
+        android:text="Submit"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView" />
+
+</android.support.constraint.ConstraintLayout>

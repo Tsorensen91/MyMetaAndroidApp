@@ -8,14 +8,17 @@ import android.os.ParcelFileDescriptor
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import chester.ac.uk.nextgenappandroid.R.id.addStepIcon
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
+import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.firstcard_layout.*
 import kotlinx.android.synthetic.main.fragment_condition.*
 import java.io.FileDescriptor
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     val mailTrackerAddFragment = MailTrackerAddItem()
     val preferencesFragment = FragmentPreferences()
     val dietTrackerAddItemFragment = DietTrackerAddItem()
+    val transitionTrackerAddFragment = TransitionTrackerAdd()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         list.add(mailTrackerAddFragment)
         list.add(preferencesFragment)
         list.add(dietTrackerAddItemFragment)
+        list.add(transitionTrackerAddFragment)
 
         for (x in 0 until list.size) {
             fragmentHide(list[x])
@@ -159,6 +164,11 @@ class MainActivity : AppCompatActivity() {
                 activeFragment = dietTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
+            transitionTrackerAddFragment -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(transitionTrackerFragment).commit()
+                activeFragment = transitionTrackerFragment
+                backbutton.visibility = View.INVISIBLE
+            }
             preferencesFragment -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(previousFragment ?: calendarFragment).commit()
                 activeFragment = previousFragment ?: calendarFragment
@@ -214,6 +224,11 @@ class MainActivity : AppCompatActivity() {
             }
             getString(R.string.diettracker) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerFragment).commit()
+
+                if (activeFragment == dietTrackerAddItemFragment) {
+                    var mealList = info.split(",").map { it.trim() }
+
+                }
                 activeFragment = dietTrackerFragment
                 backbutton.visibility = View.INVISIBLE
             }
@@ -253,6 +268,11 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.diettrackeradd) -> {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerAddItemFragment).addToBackStack("tag").commit()
                 activeFragment = dietTrackerAddItemFragment
+                backbutton.visibility = View.VISIBLE
+            }
+            getString(R.string.transitiontrackeradd) -> {
+                supportFragmentManager.beginTransaction().hide(activeFragment).show(transitionTrackerAddFragment).addToBackStack("tag").commit()
+                activeFragment = transitionTrackerAddFragment
                 backbutton.visibility = View.VISIBLE
             }
         }

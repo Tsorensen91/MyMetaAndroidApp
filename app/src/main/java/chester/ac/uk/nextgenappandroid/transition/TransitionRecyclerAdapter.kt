@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.card_layout.view.*
+import kotlinx.android.synthetic.main.firstcard_layout.view.*
 
-class TransitionRecyclerAdapter : RecyclerView.Adapter<TransitionRecyclerAdapter.ViewHolder>() {
+class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapter<TransitionRecyclerAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return 1 else return 2;
@@ -17,6 +19,10 @@ class TransitionRecyclerAdapter : RecyclerView.Adapter<TransitionRecyclerAdapter
         var view: View
         if (viewType == 1) {
             view = LayoutInflater.from(viewGroup.context).inflate(R.layout.firstcard_layout, viewGroup, false)
+            view.addStepIcon.setOnClickListener {
+
+                activity.fragmentSwap(activity.getString(R.string.transitiontrackeradd), "")
+            }
         } else {
             view = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_layout, viewGroup, false)
         }
@@ -35,6 +41,8 @@ class TransitionRecyclerAdapter : RecyclerView.Adapter<TransitionRecyclerAdapter
         if (position == itemCount-1) {
             viewHolder.itemView.transitionBarBottom.visibility = View.INVISIBLE
         }
+
+
     }
 
     inner class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
