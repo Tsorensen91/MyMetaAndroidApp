@@ -31,6 +31,7 @@
     <string name="editmymedication">editmymedication</string>
     <string name="editprofilepicture">editProfilePicture</string>
     <string name="mailtrackeradd">mailTrackerAdd</string>
+    <string name="transitiontrackeradd">transitionTrackerAdd</string>
     <string name="preferencesfragment">preferencesfragment</string>
     <string name="tvTitleBox">TextView</string>
 

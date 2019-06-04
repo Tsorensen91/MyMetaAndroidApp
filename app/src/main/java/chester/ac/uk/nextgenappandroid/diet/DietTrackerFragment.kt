@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
-import kotlinx.android.synthetic.main.diet_tracket_card_layout.*
 import kotlinx.android.synthetic.main.fragment_diet_tracker.*
 
 
@@ -37,7 +35,7 @@ class DietTrackerFragment : Fragment() {
         rvDietTracker.adapter = adapter
 
         addDietButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.diettrackeradd), "")
+            (activity as MainActivity).fragmentSwap(getString(R.string.diettrackeradd), "20/20/2020, breakfast, 10:02pm, 200, 500")
         }
     }
 
