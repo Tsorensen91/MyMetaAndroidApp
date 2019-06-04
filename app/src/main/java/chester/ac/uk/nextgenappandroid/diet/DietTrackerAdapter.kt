@@ -13,26 +13,22 @@ class DietTrackerAdapter: RecyclerView.Adapter<DietTrackerAdapter.ViewHolder>() 
 
     var date_n = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
 
-    var list = mutableListOf<NutritionList>()
-
-
+    var list = mutableListOf<Meals>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.diet_tracker_card_layout, viewGroup,false)
-
 
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        //return list.size
-        return 20
+        return list.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
        val cardView = viewHolder.itemView
         //val item = list[position]
-        cardView.tvDatePicker.text = "20/20/2020"
+        cardView.tvDatePicker.text = list[position].date
                 //date_n.toString()
         //cardView.tvNutrition.text = "protein 200000g   something else 2000000g"
                 //item.toString()
