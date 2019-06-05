@@ -17,7 +17,7 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/plus_circular"
             app:layout_constraintEnd_toStartOf="@id/addsteptext"
-            app:layout_constraintStart_toEndOf="@+id/transitionDate"
+            app:layout_constraintStart_toEndOf="@+id/transitionDae"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/transitionDate"
+            android:id="@+id/transitionDae"
             android:layout_marginTop="35dp"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:layout_marginEnd="20dp"
             android:id="@+id/transitionBarTop"
             app:layout_constraintTop_toBottomOf="@id/addStepIcon"
-            app:layout_constraintStart_toEndOf="@id/transitionDate"
+            app:layout_constraintStart_toEndOf="@id/transitionDae"
             app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
             android:src="@color/colorGrey"/>
 

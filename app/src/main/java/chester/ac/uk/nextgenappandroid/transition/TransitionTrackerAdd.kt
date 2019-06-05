@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.R
 
 
-class transition_tracker_add : Fragment() {
+class TransitionTrackerAdd : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
