@@ -8,7 +8,7 @@ import android.os.ParcelFileDescriptor
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import chester.ac.uk.nextgenappandroid.R.id.addStepIcon
+import chester.ac.uk.nextgenappandroid.R.layout.fragment_calendar
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
@@ -18,30 +18,29 @@ import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.firstcard_layout.*
 import kotlinx.android.synthetic.main.fragment_condition.*
 import java.io.FileDescriptor
 
+enum class FragmentType(val desc: String) {
+    CALENDAR("FragmentCalendar"),
+    TRANSITION_TRACKER("FragmentTransitionTracker"),
+    TRANSITION_TRACKER_ADD("FragmentTransitionTrackerAdd"),
+    CONDITION_HUB("FragmentConditionHub"),
+    CONDITION_HUB_EDIT_ABOUT("FragmentConditionHubEditAbout"),
+    CONDITION_HUB_MY_CONDITION("FragmentConditionHubMyCondition"),
+    CONDITION_HUB_MY_MEDICATION("FragmentConditionHubMyMedication"),
+    CONDITION_HUB_MY_PICTURE("ConditionHubMyPicture"),
+    MAIL_TRACKER("FragmentMailTracker"),
+    MAIL_TRACKER_ADD_ITEM("FragmentMailTrackerAddItem"),
+    DIET_TRACKER("FragmentDietTracker"),
+    DIET_TRACKER_ADD_ITEM("FragmentDietTrackerAddItem"),
+    PREFERENCES("FragmentPreferences")
+}
 
 class MainActivity : AppCompatActivity() {
 
-    var list = mutableListOf<Fragment>()
     var activeFragment:Fragment = CalendarFragment()
     var previousFragment: Fragment? = null
-
-    val transitionTrackerFragment = TransitionTrackerFragment()
-    val conditionFragment = ConditionFragment()
-    val calendarFragment = CalendarFragment()
-    val mailTrackerFragment = MailTrackerFragment()
-    val dietTrackerFragment = DietTrackerFragment()
-    val conditionEditAbout = ConditionEditAbout()
-    val myConditionEditFragment = MyConditionEditFragment()
-    val myMedicationEditFragment = MyMedicationEditFragment()
-    val myPictureEditFragment = MyPictureEditFragment()
-    val mailTrackerAddFragment = MailTrackerAddItem()
-    val preferencesFragment = FragmentPreferences()
-    val dietTrackerAddItemFragment = DietTrackerAddItem()
-    val transitionTrackerAddFragment = TransitionTrackerAdd()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,50 +48,50 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        list.add(transitionTrackerFragment)
-        list.add(conditionFragment)
-        list.add(calendarFragment)
-        list.add(mailTrackerFragment)
-        list.add(dietTrackerFragment)
-        list.add(conditionEditAbout)
-        list.add(myConditionEditFragment)
-        list.add(myMedicationEditFragment)
-        list.add(myPictureEditFragment)
-        list.add(mailTrackerAddFragment)
-        list.add(preferencesFragment)
-        list.add(dietTrackerAddItemFragment)
-        list.add(transitionTrackerAddFragment)
+        registerFragment(FragmentType.CALENDAR, CalendarFragment(), false)
 
-        for (x in 0 until list.size) {
-            fragmentHide(list[x])
-        }
+        registerFragment(FragmentType.TRANSITION_TRACKER, TransitionTrackerFragment(), false)
+        registerFragment(FragmentType.TRANSITION_TRACKER_ADD, TransitionTrackerAdd(), true)
 
-        backbutton.visibility = View.INVISIBLE
+        registerFragment(FragmentType.CONDITION_HUB, ConditionFragment(), false)
+        registerFragment(FragmentType.CONDITION_HUB_EDIT_ABOUT, ConditionEditAbout(), true)
+        registerFragment(FragmentType.CONDITION_HUB_MY_CONDITION, MyConditionEditFragment(), true)
+        registerFragment(FragmentType.CONDITION_HUB_MY_MEDICATION, MyMedicationEditFragment(), true)
+        registerFragment(FragmentType.CONDITION_HUB_MY_PICTURE, MyPictureEditFragment(), true)
 
-        fragmentSwap(getString(R.string.calendar), "")
+        registerFragment(FragmentType.MAIL_TRACKER, MailTrackerFragment(), false)
+        registerFragment(FragmentType.MAIL_TRACKER_ADD_ITEM, MailTrackerAddItem(), true)
+
+
+        registerFragment(FragmentType.DIET_TRACKER, DietTrackerFragment(), false)
+        registerFragment(FragmentType.DIET_TRACKER_ADD_ITEM, DietTrackerAddItem(), true)
+
+        registerFragment(FragmentType.PREFERENCES, FragmentPreferences(), true)
+
+        showFragment(FragmentType.CALENDAR)
 
         navigation.selectedItemId = R.id.calendarButton
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.transitionButton -> {
-                    fragmentSwap(getString(R.string.transition), "")
+                    showFragment(FragmentType.TRANSITION_TRACKER)
                     backbutton.visibility = View.INVISIBLE
                 }
 
                 R.id.conditionButton -> {
-                    fragmentSwap(getString(R.string.condition), "")
+                    showFragment(FragmentType.CONDITION_HUB)
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.calendarButton -> {
-                    fragmentSwap(getString(R.string.calendar), "")
+                    showFragment(FragmentType.CALENDAR)
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.mailtrackerButton -> {
-                    fragmentSwap(getString(R.string.mailtracker), "")
+                    showFragment(FragmentType.MAIL_TRACKER)
                     backbutton.visibility = View.INVISIBLE
                 }
                 R.id.diettrackerButton -> {
-                    fragmentSwap(getString(R.string.diettracker), "")
+                    showFragment(FragmentType.DIET_TRACKER)
                     backbutton.visibility = View.INVISIBLE
                 }
             }
@@ -100,17 +99,76 @@ class MainActivity : AppCompatActivity() {
         }
 
         backbutton.setOnClickListener {
-            onBackPressed()
+            onBackPress()
         }
 
         preferencesButton.setOnClickListener {
-            fragmentSwap(getString(R.string.preferencesfragment), "")
+            showFragment(FragmentType.PREFERENCES)
+        }
+
+    }
+
+    private fun registerFragment(type: FragmentType, fragment: Fragment, showBackButton: Boolean){
+        val bundle = Bundle()
+        bundle.putBoolean("showBackButton", showBackButton)
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment, type.desc).hide(fragment).commit();
+    }
+
+    fun showFragment(type: FragmentType, bundle: Bundle) {
+        val fragment = supportFragmentManager.findFragmentByTag(type.desc)
+
+        if (fragment != null){
+            //Set date to be transferred
+
+            bundle.putBoolean("showBackButton", (fragment.arguments!!.get("showBackButton") as Boolean))
+            fragment.arguments = bundle
+
+            backbutton.visibility = View.INVISIBLE
+            if((fragment.arguments!!.get("showBackButton") as Boolean)) {
+                bundle.putBoolean("showBackButton", (fragment.arguments!!.get("showBackButton") as Boolean))
+                backbutton.visibility = View.VISIBLE
+            }
+
+            supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+            previousFragment = activeFragment
+            activeFragment = fragment
+
+
+        }
+
+    }
+
+    fun showFragment(type: FragmentType) {
+        val fragment = supportFragmentManager.findFragmentByTag(type.desc)
+
+        if (fragment != null){
+
+            backbutton.visibility = View.INVISIBLE
+            if((fragment.arguments!!.get("showBackButton") as Boolean)) {
+                backbutton.visibility = View.VISIBLE
+            }
+
+            supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+            previousFragment = activeFragment
+            activeFragment = fragment
+
+        }
+
+    }
+
+    fun onBackPress() {
+
+        if(previousFragment != null) {
+            supportFragmentManager.beginTransaction().hide(activeFragment).show(previousFragment!!).commit()
+            val temp = activeFragment
+            activeFragment = previousFragment!!
+            previousFragment = temp
+            backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
         }
     }
 
-
-
-
+    /*
     override fun onBackPressed() {
         super.onBackPressed()
         when (activeFragment) {
@@ -278,10 +336,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    fun fragmentHide (fragment: Fragment) {
-        supportFragmentManager.beginTransaction().add(R.id.main_container, fragment).hide(fragment).commit()
-    }
-
+    */
 
 }

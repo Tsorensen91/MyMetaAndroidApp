@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_calendar"
     tools:context=".calendar.CalendarFragment">
 
 
@@ -91,7 +92,7 @@
     </LinearLayout>
 
     <chester.ac.uk.nextgenappandroid.calendar.MyMetaCalendarView
-        android:id="@+id/my_meta_calendar_view"
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
@@ -114,7 +115,7 @@
         android:background="@drawable/boxpink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_meta_calendar_view" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <TextView
         android:id="@+id/tvUpcomingEvents"
@@ -175,14 +176,6 @@
         app:layout_constraintEnd_toEndOf="@+id/dateHeader"
         app:layout_constraintStart_toStartOf="@+id/dateHeader"
         app:layout_constraintTop_toTopOf="@+id/dateHeader" />
-
-    <GridView
-        android:id="@+id/calendar_grid"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:numColumns="7"
-        app:layout_constraintTop_toBottomOf="@id/calendar_header"/>
-
 
 
 </android.support.constraint.ConstraintLayout>

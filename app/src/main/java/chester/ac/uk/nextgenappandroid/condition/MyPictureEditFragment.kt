@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_my_medication.*
@@ -44,7 +45,7 @@ class MyPictureEditFragment : Fragment() {
             // browser.
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                 // Filter to only show results that can be "opened", such as a
-                // file (as opposed to a list of contacts or timezones)
+                // file (as opposed to a fragments of contacts or timezones)
                 addCategory(Intent.CATEGORY_OPENABLE)
 
                 // Filter to show only images, using the image MIME data type.
@@ -58,7 +59,8 @@ class MyPictureEditFragment : Fragment() {
         }
 
         submitButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.condition), imageUri)
+//            (activity as MainActivity).fragmentSwap(getString(R.string.condition), imageUri)
+            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB)
         }
 
     }

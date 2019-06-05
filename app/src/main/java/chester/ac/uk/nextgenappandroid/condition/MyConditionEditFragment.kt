@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 
 import chester.ac.uk.nextgenappandroid.R
@@ -24,7 +25,8 @@ class MyConditionEditFragment : Fragment() {
 
         submitButton.setOnClickListener{
 
-            (activity as MainActivity).fragmentSwap(getString(R.string.condition), etCondition.text.toString())
+//            (activity as MainActivity).fragmentSwap(getString(R.string.condition), etCondition.text.toString())
+            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB)
         }
     }
 

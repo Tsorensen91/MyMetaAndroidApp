@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
@@ -21,6 +22,7 @@ class ConditionEditAbout : Fragment() {
     var gender = ""
     var ethnicity = ""
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,7 +48,11 @@ class ConditionEditAbout : Fragment() {
             builder.append("Date of Birth: ").append(daySpinner.selectedItem).append(" ").append(monthSpinner.selectedItem).append(" ").append(yearSpinner.selectedItem)
 
 
-            (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())
+//            (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())
+
+            val bundle = Bundle()
+            bundle.putString("conditonEditAbout", builder.toString())
+            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB, bundle)
         }
     }
 

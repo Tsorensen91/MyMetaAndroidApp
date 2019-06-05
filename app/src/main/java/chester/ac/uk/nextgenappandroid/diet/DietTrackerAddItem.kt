@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_diet_tracker_add_item.*
@@ -23,7 +24,8 @@ class DietTrackerAddItem : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         submitButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), "food, drink")
+//            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), "food, drink")
+            (activity as MainActivity).showFragment(FragmentType.DIET_TRACKER)
         }
     }
 

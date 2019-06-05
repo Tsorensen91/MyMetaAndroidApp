@@ -151,6 +151,7 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
     }
 
     override fun performClick(): Boolean {
+
         return super.performClick()
     }
 
@@ -179,6 +180,7 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
             }
         }
 
+        invalidate()
         return true
     }
 
