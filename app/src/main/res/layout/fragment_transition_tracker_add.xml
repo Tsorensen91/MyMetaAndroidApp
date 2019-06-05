@@ -7,6 +7,7 @@
     tools:context=".transition.TransitionTrackerAdd">
 
     <com.xw.repo.BubbleSeekBar
+        android:id="@+id/bubbleSeekBar"
         android:layout_width="match_parent"
         android:layout_height="12dp"
         app:bsb_auto_adjust_section_mark="true"
@@ -20,8 +21,8 @@
         app:bsb_show_thumb_text="true"
         app:bsb_thumb_text_size="18sp"
         app:bsb_touch_to_seek="true"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="375dp" />
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="560dp" />
 
     <TextView
         android:id="@+id/tvStepType"
@@ -145,21 +146,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
+        android:layout_marginTop="61dp"
         android:layout_marginEnd="162dp"
         android:background="@color/colorTeal"
         android:text="Submit"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="568dp" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleSeekBar" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvStepType"
         app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess" />
 
