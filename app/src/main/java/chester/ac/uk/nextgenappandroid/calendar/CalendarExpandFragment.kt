@@ -9,20 +9,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.R
+import kotlinx.android.synthetic.main.fragment_calendar_expand.*
 
 
-class CalendarExpand : Fragment() {
+class CalendarExpandFragment : Fragment() {
 
-    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
 
         layoutManager = LinearLayoutManager(context)
+
+        rvCalendarHourSlots.layoutManager = layoutManager
+
+        adapter = CalendarAdapter()
+        rvCalendarHourSlots.adapter = adapter
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_expand, container, false)
     }
+
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+
+    private lateinit var adapter: CalendarAdapter
 
 
 }
