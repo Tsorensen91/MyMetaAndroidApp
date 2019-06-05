@@ -5,14 +5,16 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
-import android.text.format.DateFormat
 import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import java.util.*
 
+
 class CalRect(var x: Float, var y: Float, var width: Float, var height: Float) {
 
-    var date: Date? = null
+    lateinit var date: Date
 
     fun getRectF(): RectF {
         return RectF(x, y, x + width, y + height);
@@ -21,29 +23,33 @@ class CalRect(var x: Float, var y: Float, var width: Float, var height: Float) {
 
 class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private val calendar = GregorianCalendar.getInstance()
-    private var currentDate: Date = calendar.time
-    lateinit var calendarDate: Date
-    private lateinit var startDateOfMonth: Date
-    private var weeksInMonth = 0
-    private var weekDayOfFirstDay = 0
+    val calendar = GregorianCalendar()
+    val currentDate = GregorianCalendar()
 
-    private lateinit var cells: Array<CalRect>
+    private val daysCount = 42
 
-    private val rectPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    var cells = arrayOfNulls<CalRect>(daysCount)
+
+    private val rectOutline = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
         style = Paint.Style.STROKE
         strokeWidth = 1.5f
     }
 
-    private val rectFillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.GRAY
+    private val rectFillWhite = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.WHITE
+        style = Paint.Style.FILL
+        strokeWidth = 1.5f
+    }
+
+    private val rectFillGrey = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#ebebeb")
         style = Paint.Style.FILL_AND_STROKE
         strokeWidth = 1.5f
     }
 
-    private val rectFillCurrentDatePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.BLUE
+    private val rectFillTeal = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#abe5e4")
         style = Paint.Style.FILL
         strokeWidth = 1.5f
     }
@@ -59,27 +65,27 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
         updateCalendar()
     }
 
-    //Lots of plus and minus 1's and 2' (Just go with it)
+
     private fun updateCalendar() {
-        calendarDate = calendar.time
+        val calendar = currentDate.clone() as Calendar
 
-        weekDayOfFirstDay = calendar.get(Calendar.DAY_OF_WEEK) - 2 // -2 because the week starts on a Sunday
-        val daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-
-        weeksInMonth = 6
-        cells = Array(weeksInMonth * 7) { CalRect(0f, 0f, 0f, 0f) }
-
+        // determine the cell for current month's beginning
         calendar.set(Calendar.DAY_OF_MONTH, 1)
-        startDateOfMonth = calendar.time
+        var monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2
 
-        for (i in 0 until cells.size) {
+        if(monthBeginningCell == -1) //Stop wrapping of the cells out of the grid
+            monthBeginningCell = 6
 
-            if (i in weekDayOfFirstDay..(daysInMonth + 1)) {
-                cells[i].date = startDateOfMonth
-                calendar.add(Calendar.DATE, 1)
-                startDateOfMonth = calendar.time
-            }
+        // move calendar backwards to the beginning of the week
+        calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell)
+
+        // fill cells
+        for(i in 0 until cells.size) {
+            cells[i] = CalRect(0f, 0f, 0f, 0f)
+            cells[i]?.date = calendar.time
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
+
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -88,23 +94,25 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
         setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
 
         val cellWidth = measuredWidth.toFloat() / 7.0f
-        val cellHeight = measuredHeight.toFloat() / weeksInMonth.toFloat()
+        val cellHeight = measuredHeight.toFloat() / 6.0f
 
-        for (y in 0 until weeksInMonth) {
+        for (y in 0 until 6) {
             for (x in 0 until 7) {
 
                 val index = x + (y * 7)
                 val rectX = x * cellWidth
                 val rectY = y * cellHeight
 
-                cells[index].x = rectX
-                cells[index].y = rectY
-                cells[index].width = cellWidth
-                cells[index].height = cellHeight
+                cells[index]?.x = rectX
+                cells[index]?.y = rectY
+                cells[index]?.width = cellWidth
+                cells[index]?.height = cellHeight
             }
         }
 
     }
+
+    val today = Date()
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -112,26 +120,70 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
         canvas?.apply {
             for (i in 0 until cells.size) {
 
-                //Render cells
-                if (cells[i].date != null) {
-                    canvas.drawRect(cells[i].getRectF(), rectPaint)
+                if (cells[i] != null) {
+                    val cell = cells[i]
+                    val date = cell!!.date
+                    val day = date.date
+                    val month = date.month
+                    val year = date.year
 
-                    val day = (DateFormat.format("d", cells[i].date) as String)
-                    canvas.drawText(day, cells[i].x + 20, cells[i].y + 30, textPaint)
+                    //Render cells
 
-                    if (cells[i].date == currentDate) {
-                        canvas.drawRect(cells[i].getRectF(), rectFillCurrentDatePaint)
+
+                    if (month != currentDate.time.month || year != currentDate.time.year) { // Gray out days that aren't in the current month
+
+                        canvas.drawRect(cell.getRectF(), rectFillGrey)
+                    } else if (day == today.date && month == today.month && year == today.year) { //Highlight the current day
+
+                        canvas.drawRect(cell.getRectF(), rectFillTeal)
+                        canvas.drawText(day.toString(), cell.x + 20, cell.y + 30, textPaint)
+                    } else { //Fill in other cells as white
+
+                        canvas.drawRect(cell.getRectF(), rectFillWhite)
+                        canvas.drawText(day.toString(), cell.x + 20, cell.y + 30, textPaint)
                     }
-                } else {
-                    canvas.drawRect(cells[i].getRectF(), rectFillPaint)
-                    canvas.drawRect(cells[i].getRectF(), rectPaint)
+
+                    canvas.drawRect(cell.getRectF(), rectOutline) //Draw rect outline
+
                 }
             }
         }
     }
 
+    override fun performClick(): Boolean {
+        return super.performClick()
+    }
+
+    override fun onTouchEvent(motionEvent: MotionEvent?): Boolean {
+
+        if(motionEvent != null) {
+            if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+
+                performClick()
+
+                val mX = motionEvent.x
+                val mY = motionEvent.y
+                for (rect in cells) {
+
+                    if (rect != null) {
+                        val rectF = rect.getRectF()
+                        val isInside = mX >= rectF.left && mX <= rectF.right && mY >= rectF.top && mY <= rectF.bottom
+
+                        if (isInside) {
+                            Log.i("Click coords", "X: ${motionEvent.x} Y: ${motionEvent.y}")
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        return true
+    }
+
     fun incrementMonth() {
-        calendar.add(Calendar.MONTH, 1)
+        currentDate.add(Calendar.MONTH, 1)
         updateCalendar()
 
         requestLayout()
@@ -139,7 +191,7 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
     }
 
     fun decrementMonth() {
-        calendar.add(Calendar.MONTH, -1)
+        currentDate.add(Calendar.MONTH, -1)
         updateCalendar()
 
         requestLayout()

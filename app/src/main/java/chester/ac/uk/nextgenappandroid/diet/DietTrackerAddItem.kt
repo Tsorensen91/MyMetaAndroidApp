@@ -23,7 +23,7 @@ class DietTrackerAddItem : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         submitButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), "food, drink")
+            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), "20/20/2020, breakfast, 10:02pm, 200, 500")
         }
     }
 

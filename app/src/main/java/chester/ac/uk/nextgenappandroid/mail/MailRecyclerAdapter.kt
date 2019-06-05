@@ -28,21 +28,10 @@ class MailRecyclerAdapter : RecyclerView.Adapter<MailRecyclerAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        if (position > 0 ){
-            viewHolder.itemView.tvFrom.text = ""
-            viewHolder.itemView.tvAppointment.text = ""
-        }
-        if (position == itemCount -1){
-            viewHolder.itemView.transitionBarBottom.visibility = View.INVISIBLE
-        }
 
 
     }
 
 
-    inner class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-
-        }
-
-
+    inner class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
 }

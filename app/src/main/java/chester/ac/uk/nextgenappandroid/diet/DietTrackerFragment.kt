@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_diet_tracker.*
 
 class DietTrackerFragment : Fragment() {
 
+    var list = mutableListOf<Meals>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,8 +35,10 @@ class DietTrackerFragment : Fragment() {
         adapter = DietTrackerAdapter()
         rvDietTracker.adapter = adapter
 
+        adapter.list = list
+
         addDietButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.diettrackeradd), "20/20/2020, breakfast, 10:02pm, 200, 500")
+            (activity as MainActivity).fragmentSwap(getString(R.string.diettrackeradd), "")
         }
     }
 
