@@ -11,23 +11,20 @@ import android.view.View
 import chester.ac.uk.nextgenappandroid.R.id.addStepIcon
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerAdapter
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
-import chester.ac.uk.nextgenappandroid.diet.Meals
+import chester.ac.uk.nextgenappandroid.diet.*
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.firstcard_layout.*
 import kotlinx.android.synthetic.main.fragment_condition.*
 import java.io.FileDescriptor
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    var mealList = mutableListOf<Meals>()
+    var dayList = mutableListOf<DietTrackerDay>()
     var list = mutableListOf<Fragment>()
     var activeFragment:Fragment = CalendarFragment()
     var previousFragment: Fragment? = null
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     val myPictureEditFragment = MyPictureEditFragment()
     val mailTrackerAddFragment = MailTrackerAddItem()
     val preferencesFragment = FragmentPreferences()
-    val dietTrackerAddItemFragment = DietTrackerAddItem()
+    var dietTrackerAddItemFragment = DietTrackerAddItem()
     val transitionTrackerAddFragment = TransitionTrackerAdd()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -231,11 +228,25 @@ class MainActivity : AppCompatActivity() {
                 if (activeFragment == dietTrackerAddItemFragment) {
                     var mealInfo = info.split(",").map { it.trim() }
                     var nutrition = ""
-                    for (x in 3 until mealInfo.size) {
+                    var dayExists = false
+
+                    for (x in 2 until mealInfo.size) {
                         nutrition += mealInfo[x]
                     }
-                    val meal = Meals(mealInfo[0], mealInfo[1], mealInfo[2], nutrition)
-                    dietTrackerFragment.list.add(meal)
+                    val meal = Meals(mealInfo[0], mealInfo[1], nutrition)
+
+                    for (x in 0 until dayList.size) {
+                        if (dayList[x].mealDate.date == Calendar.getInstance().time.date && dayList[x].mealDate.month == Calendar.getInstance().time.month && dayList[x].mealDate.year == Calendar.getInstance().time.year ){
+                            dayList[x].mealList.add(meal)
+                            dayExists = true
+                        }
+                    }
+                    if (dayExists == false) {
+                        val day = DietTrackerDay(Calendar.getInstance().time)
+                        day.mealList.add(meal)
+                        dayList.add(day)
+                    }
+                    dietTrackerFragment.updateList(dayList)
                 }
                 activeFragment = dietTrackerFragment
                 backbutton.visibility = View.INVISIBLE

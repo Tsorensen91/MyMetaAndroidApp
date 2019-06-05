@@ -3,6 +3,8 @@ package chester.ac.uk.nextgenappandroid.diet
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +25,9 @@ class DietTrackerAddItem : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         submitButton.setOnClickListener {
-            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), "20/20/2020, breakfast, 10:02pm, 200, 500")
+
+            val mealName = etMealName.text
+            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), ""+mealName+", 10:02pm, 200, 500")
         }
     }
 
