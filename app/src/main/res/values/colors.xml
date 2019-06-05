@@ -5,9 +5,9 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorMagenta">#B81570</color>
     <color name="colorTeal">#01B0AD</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#C0C0C0</color>
-    <color name="colorLightGrey">#EBEBEB</color>
+    <color name="colorLightGrey">#ebebeb</color>
 
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
