@@ -6,38 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".transition.TransitionTrackerAdd">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/colorLightGrey"
-        android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess">
-
-        <LinearLayout
-            android:id="@+id/transitionTrackerScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/etScrollView"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine" />
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    <com.xw.repo.BubbleSeekBar
+        android:id="@+id/bubbleSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        app:bsb_auto_adjust_section_mark="true"
+        app:bsb_max="7"
+        app:bsb_min="1"
+        app:bsb_second_track_color="@color/colorMagenta"
+        app:bsb_section_count="6"
+        app:bsb_section_text_position="below_section_mark"
+        app:bsb_show_section_mark="true"
+        app:bsb_show_section_text="true"
+        app:bsb_show_thumb_text="true"
+        app:bsb_thumb_text_size="18sp"
+        app:bsb_touch_to_seek="true"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="560dp" />
 
     <TextView
         android:id="@+id/tvStepType"
@@ -117,7 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:text="Add Notes:"
         android:gravity="center"
@@ -130,7 +115,7 @@
     <EditText
         android:id="@+id/etAddNotes"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="125dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@color/colorLightGrey"
@@ -161,13 +146,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="61dp"
         android:layout_marginEnd="162dp"
         android:background="@color/colorTeal"
         android:text="Submit"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/bubbleSeekBar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvStepType"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess" />
 
 </android.support.constraint.ConstraintLayout>

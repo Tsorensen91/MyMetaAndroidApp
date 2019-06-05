@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.fragment_diet_tracker.*
 
 class DietTrackerFragment : Fragment() {
 
+    private lateinit var dietLayoutManager: RecyclerView.LayoutManager
+
+    private lateinit var dietAdapter: DietTrackerAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,12 +31,12 @@ class DietTrackerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        layoutManager = LinearLayoutManager(context)
+        dietLayoutManager = LinearLayoutManager(context)
 
-        rvDietTracker.layoutManager = layoutManager
+        rvDietTracker.layoutManager = dietLayoutManager
 
-        adapter = DietTrackerAdapter()
-        rvDietTracker.adapter = adapter
+        dietAdapter = DietTrackerAdapter()
+        rvDietTracker.adapter = dietAdapter
 
         addDietButton.setOnClickListener {
 //            (activity as MainActivity).fragmentSwap(getString(R.string.diettrackeradd), "20/20/2020, breakfast, 10:02pm, 200, 500")
@@ -41,9 +44,16 @@ class DietTrackerFragment : Fragment() {
         }
     }
 
-    private lateinit var layoutManager: RecyclerView.LayoutManager
+    fun updateList(list: List<DietTrackerDay> ){
+        var mutable = mutableListOf<DietTrackerDay>()
+        for (x in 0 until list.size) {
+            mutable.add(list[x])
+        }
+        dietAdapter.list = mutable
+        dietAdapter.notifyDataSetChanged()
+    }
 
-    private lateinit var adapter: DietTrackerAdapter
+
 
 
 }

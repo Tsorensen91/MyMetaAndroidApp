@@ -11,8 +11,7 @@ import android.view.View
 import chester.ac.uk.nextgenappandroid.R.layout.fragment_calendar
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
+import chester.ac.uk.nextgenappandroid.diet.*
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
@@ -38,6 +37,8 @@ enum class FragmentType(val desc: String) {
 }
 
 class MainActivity : AppCompatActivity() {
+
+    var dayList = mutableListOf<DietTrackerDay>()
 
     var activeFragment:Fragment = CalendarFragment()
     var previousFragment: Fragment? = null
@@ -284,8 +285,27 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerFragment).commit()
 
                 if (activeFragment == dietTrackerAddItemFragment) {
-                    var mealList = info.split(",").map { it.trim() }
+                    var mealInfo = info.split(",").map { it.trim() }
+                    var nutrition = ""
+                    var dayExists = false
 
+                    for (x in 2 until mealInfo.size) {
+                        nutrition += mealInfo[x]
+                    }
+                    val meal = Meals(mealInfo[0], mealInfo[1], nutrition)
+
+                    for (x in 0 until dayList.size) {
+                        if (dayList[x].mealDate.date == Calendar.getInstance().time.date && dayList[x].mealDate.month == Calendar.getInstance().time.month && dayList[x].mealDate.year == Calendar.getInstance().time.year ){
+                            dayList[x].mealList.add(meal)
+                            dayExists = true
+                        }
+                    }
+                    if (dayExists == false) {
+                        val day = DietTrackerDay(Calendar.getInstance().time)
+                        day.mealList.add(meal)
+                        dayList.add(day)
+                    }
+                    dietTrackerFragment.updateList(dayList)
                 }
                 activeFragment = dietTrackerFragment
                 backbutton.visibility = View.INVISIBLE

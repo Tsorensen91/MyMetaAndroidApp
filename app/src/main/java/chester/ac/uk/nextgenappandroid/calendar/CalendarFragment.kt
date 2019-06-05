@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 import java.util.*
 
 
-class CalendarFragment : Fragment(){
+class CalendarFragment : Fragment() {
 
     val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
