@@ -2,32 +2,39 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title=""
+    <item
         android:id="@+id/transitionButton"
-        android:icon="@drawable/ic_edit_regular"
+        android:icon="@drawable/transition"
         android:itemBackground="@drawable/box"
+        android:title=""
         app:showAsAction="ifRoom" />
-    <item android:title=""
+    <item
         android:id="@+id/conditionButton"
-        android:icon="@drawable/ic_edit_regular"
-        android:state_checked="true" app:itemBackground="@drawable/box"
-        app:showAsAction="ifRoom" />
-    <item android:title=""
-        android:id="@+id/calendarButton"
-        android:icon="@mipmap/ic_logo2"
-        android:state_checked="true" app:itemBackground="@drawable/box"
-        app:showAsAction="ifRoom" />
-    <item android:title=""
-        android:id="@+id/mailtrackerButton"
-        android:icon="@drawable/ic_edit_regular"
-        android:state_checked="false"
-        android:drawable="@drawable/box"
-        app:showAsAction="ifRoom" />
-    <item android:title=""
-        android:id="@+id/diettrackerButton"
-        android:icon="@drawable/ic_edit_regular"
+        android:icon="@drawable/condition"
         android:state_checked="true"
+        android:title=""
+        app:itemBackground="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/calendarButton"
+        android:icon="@drawable/canvas"
+        android:state_checked="true"
+        android:title=""
+        app:itemBackground="@drawable/box"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/mailtrackerButton"
         android:drawable="@drawable/box"
+        android:icon="@drawable/mail"
+        android:state_checked="false"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/diettrackerButton"
+        android:drawable="@drawable/box"
+        android:icon="@drawable/diet"
+        android:state_checked="true"
+        android:title=""
 
         app:showAsAction="ifRoom" />
 
