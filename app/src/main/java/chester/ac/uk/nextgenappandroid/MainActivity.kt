@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import chester.ac.uk.nextgenappandroid.calendar.CalendarAdd
+import chester.ac.uk.nextgenappandroid.calendar.CalendarExpandFragment
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
@@ -11,12 +13,14 @@ import chester.ac.uk.nextgenappandroid.diet.DietTrackerDay
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
-import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
+import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAddFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 enum class FragmentType(val desc: String) {
     CALENDAR("FragmentCalendar"),
+    CALENDAR_EXPANDED("FragmentCalendarExpand"),
+    CALENDAR_ADD("FragmentCalendarAdd"),
     TRANSITION_TRACKER("FragmentTransitionTracker"),
     TRANSITION_TRACKER_ADD("FragmentTransitionTrackerAdd"),
     CONDITION_HUB("FragmentConditionHub"),
@@ -133,8 +137,10 @@ class MainActivity : AppCompatActivity() {
     private fun getFragmentClass(type: FragmentType): Fragment {
         return when (type) {
             FragmentType.CALENDAR -> CalendarFragment()
+            FragmentType.CALENDAR_EXPANDED -> CalendarExpandFragment()
+            FragmentType.CALENDAR_ADD -> CalendarAdd()
             FragmentType.TRANSITION_TRACKER -> TransitionTrackerFragment()
-            FragmentType.TRANSITION_TRACKER_ADD -> TransitionTrackerAdd()
+            FragmentType.TRANSITION_TRACKER_ADD -> TransitionTrackerAddFragment()
             FragmentType.CONDITION_HUB -> ConditionFragment()
             FragmentType.CONDITION_HUB_EDIT_ABOUT -> ConditionEditAbout()
             FragmentType.CONDITION_HUB_MY_CONDITION -> MyConditionEditFragment()
@@ -158,86 +164,4 @@ class MainActivity : AppCompatActivity() {
             backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
         }
     }
-
-    /*
-
-    //swaps visible fragment
-    fun fragmentSwap (fragment: String, info: String) {
-        when (fragment) {
-
-            getString(R.string.diettracker) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerFragment).commit()
-
-                if (activeFragment == dietTrackerAddItemFragment) {
-                    var mealList = info.split(",").map { it.trim() }
-
-                    for (x in 2 until mealInfo.size) {
-                        nutrition += mealInfo[x]
-                    }
-                    val meal = Meals(mealInfo[0], mealInfo[1], nutrition)
-
-                    for (x in 0 until dayList.size) {
-                        if (dayList[x].mealDate.date == Calendar.getInstance().time.date && dayList[x].mealDate.month == Calendar.getInstance().time.month && dayList[x].mealDate.year == Calendar.getInstance().time.year ){
-                            dayList[x].mealList.add(meal)
-                            dayExists = true
-                        }
-                    }
-                    if (dayExists == false) {
-                        val day = DietTrackerDay(Calendar.getInstance().time)
-                        day.mealList.add(meal)
-                        dayList.add(day)
-                    }
-                    dietTrackerFragment.updateList(dayList)
-                }
-                activeFragment = dietTrackerFragment
-                backbutton.visibility = View.INVISIBLE
-            }
-            getString(R.string.editaboutme) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(conditionEditAbout).addToBackStack("tag").commit()
-                activeFragment = conditionEditAbout
-                backbutton.visibility = View.VISIBLE
-
-            }
-            getString(R.string.editmycondition) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(myConditionEditFragment).addToBackStack("tag").commit()
-                activeFragment = myConditionEditFragment
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.editmymedication) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(myMedicationEditFragment).addToBackStack("tag").commit()
-                activeFragment = myMedicationEditFragment
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.editprofilepicture) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(myPictureEditFragment).addToBackStack("tag").commit()
-                activeFragment = myPictureEditFragment
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.mailtrackeradd) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(mailTrackerAddFragment).addToBackStack("tag").commit()
-                activeFragment = mailTrackerAddFragment
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.preferencesfragment) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(preferencesFragment).addToBackStack("tag").commit()
-                previousFragment = activeFragment
-                activeFragment = preferencesFragment
-                preferencesButton.visibility = View.INVISIBLE
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.diettrackeradd) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(dietTrackerAddItemFragment).addToBackStack("tag").commit()
-                activeFragment = dietTrackerAddItemFragment
-                backbutton.visibility = View.VISIBLE
-            }
-            getString(R.string.transitiontrackeradd) -> {
-                supportFragmentManager.beginTransaction().hide(activeFragment).show(transitionTrackerAddFragment).addToBackStack("tag").commit()
-                activeFragment = transitionTrackerAddFragment
-                backbutton.visibility = View.VISIBLE
-            }
-        }
-
-    }
-    */
-
 }

@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import chester.ac.uk.nextgenappandroid.FragmentType
+import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import java.util.*
@@ -15,10 +17,7 @@ import java.util.*
 
 class CalendarFragment : Fragment() {
 
-    val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-
-
-
+    private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -64,6 +63,8 @@ class CalendarFragment : Fragment() {
 
                             if (isInside) {
                                 Log.i("Click coords", "X: $mX Y: $mY Date: ${cell.date}")
+
+                                (activity as MainActivity).showFragment(FragmentType.CALENDAR_EXPANDED, Bundle(), FragmentType.CALENDAR, true)
                             }
                         }
 

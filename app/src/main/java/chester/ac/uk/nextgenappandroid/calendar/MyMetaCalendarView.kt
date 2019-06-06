@@ -128,8 +128,6 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
                     val year = date.year
 
                     //Render cells
-
-
                     if (month != currentDate.time.month || year != currentDate.time.year) { // Gray out days that aren't in the current month
 
                         canvas.drawRect(cell.getRectF(), rectFillGrey)
@@ -148,40 +146,6 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
                 }
             }
         }
-    }
-
-    override fun performClick(): Boolean {
-
-        return super.performClick()
-    }
-
-    override fun onTouchEvent(motionEvent: MotionEvent?): Boolean {
-
-        if(motionEvent != null) {
-            if (motionEvent.action == MotionEvent.ACTION_DOWN) {
-
-                performClick()
-
-                val mX = motionEvent.x
-                val mY = motionEvent.y
-                for (rect in cells) {
-
-                    if (rect != null) {
-                        val rectF = rect.getRectF()
-                        val isInside = mX >= rectF.left && mX <= rectF.right && mY >= rectF.top && mY <= rectF.bottom
-
-                        if (isInside) {
-                            Log.i("Click coords", "X: ${motionEvent.x} Y: ${motionEvent.y}")
-                        }
-                    }
-
-                }
-
-            }
-        }
-
-        invalidate()
-        return true
     }
 
     fun incrementMonth() {

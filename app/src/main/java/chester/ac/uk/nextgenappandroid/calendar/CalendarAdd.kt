@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.R
 
 
-class calendar_add : Fragment() {
+class CalendarAdd : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
