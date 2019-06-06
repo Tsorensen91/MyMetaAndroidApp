@@ -16,6 +16,7 @@ import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAddFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 enum class FragmentType(val desc: String) {
     CALENDAR("FragmentCalendar"),
@@ -42,7 +43,8 @@ interface OnShowFragment {
 class MainActivity : AppCompatActivity() {
 
     var activeFragment: Fragment = CalendarFragment()
-    var previousFragment: Fragment? = null
+
+    val prevStack = Stack<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment, type.desc).commit()
 
         backbutton.visibility = View.INVISIBLE
-        if (showBackButton) {
+        if (!prevStack.isEmpty()) {
             backbutton.visibility = View.VISIBLE
         }
 
@@ -108,8 +110,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .hide(activeFragment)
                 .replace(R.id.fragmentContainer, fragment)
-                .commit()
-        previousFragment = activeFragment
+        prevStack.add(activeFragment)
         activeFragment = fragment
 
 
@@ -120,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment, type.desc).commit()
 
         backbutton.visibility = View.INVISIBLE
-        if (showBackButton) {
+        if (!prevStack.isEmpty()) {
             backbutton.visibility = View.VISIBLE
         }
 
@@ -128,10 +129,20 @@ class MainActivity : AppCompatActivity() {
                 .hide(activeFragment)
                 .replace(R.id.fragmentContainer, fragment)
                 .commit()
-        previousFragment = activeFragment
+        prevStack.add(activeFragment)
         activeFragment = fragment
 
 
+    }
+
+    private fun onBackPress() {
+
+        if (!prevStack.isEmpty()) {
+            val frag = prevStack.pop()
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, frag).commit()
+            activeFragment = frag
+            backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
+        }
     }
 
     private fun getFragmentClass(type: FragmentType): Fragment {
@@ -151,17 +162,6 @@ class MainActivity : AppCompatActivity() {
             FragmentType.DIET_TRACKER -> DietTrackerFragment()
             FragmentType.DIET_TRACKER_ADD_ITEM -> DietTrackerAddItem()
             FragmentType.PREFERENCES -> FragmentPreferences()
-        }
-    }
-
-    private fun onBackPress() {
-
-        if (previousFragment != null) {
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, previousFragment!!).commit()
-            val temp = activeFragment
-            activeFragment = previousFragment!!
-            previousFragment = temp
-            backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
         }
     }
 }

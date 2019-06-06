@@ -20,7 +20,6 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
 
 
     private lateinit var dietLayoutManager: RecyclerView.LayoutManager
-    private var dietAdapter = DietTrackerAdapter(context!!)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,7 +34,7 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
 
         rvDietTracker.layoutManager = dietLayoutManager
 
-        rvDietTracker.adapter = dietAdapter
+        rvDietTracker.adapter = DietTrackerAdapter(context!!)
 
         addDietButton.setOnClickListener {
             (activity as MainActivity).showFragment(FragmentType.DIET_TRACKER_ADD_ITEM, true)
