@@ -25,8 +25,9 @@ class MyConditionEditFragment : Fragment() {
 
         submitButton.setOnClickListener{
 
-//            (activity as MainActivity).fragmentSwap(getString(R.string.condition), etCondition.text.toString())
-            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB)
+            val bundle = Bundle()
+            bundle.putString("myConditionText", etCondition.text.toString())
+            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB, bundle, FragmentType.CONDITION_HUB_MY_CONDITION, false)
         }
     }
 

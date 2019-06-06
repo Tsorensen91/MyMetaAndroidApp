@@ -22,7 +22,7 @@ class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapt
             view = LayoutInflater.from(viewGroup.context).inflate(R.layout.firstcard_layout, viewGroup, false)
             view.addStepIcon.setOnClickListener {
 
-                (activity as MainActivity).showFragment(FragmentType.TRANSITION_TRACKER_ADD)
+                activity.showFragment(FragmentType.TRANSITION_TRACKER_ADD, true)
             }
         } else {
             view = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_layout, viewGroup, false)

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
+import chester.ac.uk.nextgenappandroid.OnShowFragment
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_condition_edit_about.*
 import java.util.*
@@ -51,8 +52,8 @@ class ConditionEditAbout : Fragment() {
 //            (activity as MainActivity).fragmentSwap(getString(R.string.condition), builder.toString())
 
             val bundle = Bundle()
-            bundle.putString("conditonEditAbout", builder.toString())
-            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB, bundle)
+            bundle.putString("conditionEditAbout", builder.toString())
+            (activity as MainActivity).showFragment(FragmentType.CONDITION_HUB, bundle, FragmentType.CONDITION_HUB_EDIT_ABOUT, false)
         }
     }
 
