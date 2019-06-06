@@ -11,7 +11,7 @@ import chester.ac.uk.nextgenappandroid.diet.DietTrackerDay
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
-import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
+import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAddFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         return when (type) {
             FragmentType.CALENDAR -> CalendarFragment()
             FragmentType.TRANSITION_TRACKER -> TransitionTrackerFragment()
-            FragmentType.TRANSITION_TRACKER_ADD -> TransitionTrackerAdd()
+            FragmentType.TRANSITION_TRACKER_ADD -> TransitionTrackerAddFragment()
             FragmentType.CONDITION_HUB -> ConditionFragment()
             FragmentType.CONDITION_HUB_EDIT_ABOUT -> ConditionEditAbout()
             FragmentType.CONDITION_HUB_MY_CONDITION -> MyConditionEditFragment()
