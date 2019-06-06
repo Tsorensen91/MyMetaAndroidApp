@@ -1,24 +1,17 @@
 package chester.ac.uk.nextgenappandroid
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import chester.ac.uk.nextgenappandroid.R.layout.fragment_calendar
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.*
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
-import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAdd
+import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerAddFragment
 import chester.ac.uk.nextgenappandroid.transition.TransitionTrackerFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_condition.*
-import java.io.FileDescriptor
 
 enum class FragmentType(val desc: String) {
     CALENDAR("FragmentCalendar"),
@@ -52,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         registerFragment(FragmentType.CALENDAR, CalendarFragment(), false)
 
         registerFragment(FragmentType.TRANSITION_TRACKER, TransitionTrackerFragment(), false)
-        registerFragment(FragmentType.TRANSITION_TRACKER_ADD, TransitionTrackerAdd(), true)
+        registerFragment(FragmentType.TRANSITION_TRACKER_ADD, TransitionTrackerAddFragment(), true)
 
         registerFragment(FragmentType.CONDITION_HUB, ConditionFragment(), false)
         registerFragment(FragmentType.CONDITION_HUB_EDIT_ABOUT, ConditionEditAbout(), true)
