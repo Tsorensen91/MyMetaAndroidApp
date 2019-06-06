@@ -16,7 +16,7 @@ class DietTrackerAdapter (var context: Context): RecyclerView.Adapter<DietTracke
 
 
     private lateinit var mealLayoutManager: RecyclerView.LayoutManager
-    private var mealAdapter = MealTrackerAdapter()
+    //private var mealAdapter = MealTrackerAdapter()
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
@@ -55,7 +55,7 @@ class DietTrackerAdapter (var context: Context): RecyclerView.Adapter<DietTracke
 
         cardView.rvMealTracker.layoutManager = mealLayoutManager
 
-        cardView.rvMealTracker.adapter = mealAdapter
+        //cardView.rvMealTracker.adapter = mealAdapter
 
 
     }
