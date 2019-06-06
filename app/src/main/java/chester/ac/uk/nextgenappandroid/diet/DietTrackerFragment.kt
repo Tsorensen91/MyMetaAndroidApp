@@ -20,7 +20,7 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
 
 
     private lateinit var dietLayoutManager: RecyclerView.LayoutManager
-    private var dietAdapter = DietTrackerAdapter(context!!)
+    private lateinit var dietAdapter : DietTrackerAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,6 +30,8 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dietAdapter = DietTrackerAdapter(context!!)
 
         dietLayoutManager = LinearLayoutManager(context)
 
@@ -51,24 +53,39 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
             val info = bundle.getString("dietTrackerMeal")
             val mealInfo = info.split(",").map { it.trim() }
             var nutrition = ""
-            var dayExists = false
+
 
             for (x in 2 until mealInfo.size) {
                 nutrition += mealInfo[x]
             }
             val meal = Meals(mealInfo[0], mealInfo[1], nutrition)
 
-            for (x in 0 until DietTrackerData.dayList.size) {
-                //if (DietTrackerData.dayList[x].mealDate.date == Calendar.getInstance().time.date && DietTrackerData.dayList[x].mealDate.month == Calendar.getInstance().time.month && DietTrackerData.dayList[x].mealDate.year == Calendar.getInstance().time.year ){
-                    DietTrackerData.dayList[x].mealList.add(meal)
-                    dayExists = true
-                //}
-            }
-            if (!dayExists) {
+            if(DietTrackerData.dayList.size > 0) {
+
+                val listSize = DietTrackerData.dayList.size
+                for(day in DietTrackerData.dayList) {
+                    if (day.mealDate.date == Calendar.getInstance().time.date && day.mealDate.month == Calendar.getInstance().time.month && day.mealDate.year == Calendar.getInstance().time.year ) {
+                        day.mealList.add(meal)
+                    }
+                }
+
+            } else {
                 val day = DietTrackerDay(Calendar.getInstance().time)
                 day.mealList.add(meal)
                 DietTrackerData.dayList.add(day)
             }
+
+//            for (x in 0 until DietTrackerData.dayList.size) {
+//                //if (DietTrackerData.dayList[x].mealDate.date == Calendar.getInstance().time.date && DietTrackerData.dayList[x].mealDate.month == Calendar.getInstance().time.month && DietTrackerData.dayList[x].mealDate.year == Calendar.getInstance().time.year ){
+//                    DietTrackerData.dayList[x].mealList.add(meal)
+//                    dayExists = true
+//                //}
+//            }
+//            if (!dayExists) {
+//                val day = DietTrackerDay(Calendar.getInstance().time)
+//                day.mealList.add(meal)
+//                DietTrackerData.dayList.add(day)
+//            }
         }
     }
 
