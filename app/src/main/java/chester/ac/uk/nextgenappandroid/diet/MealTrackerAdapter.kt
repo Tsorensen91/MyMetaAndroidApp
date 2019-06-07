@@ -27,8 +27,6 @@ class MealTrackerAdapter(val pos: Int, val mealCount: Int) : RecyclerView.Adapte
         cardView.tvMealTime.text = meal.time
         cardView.tvNutrition.text = meal.nutrition
 
-
-        var stringBuilder = StringBuilder()
     }
 
     inner class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)

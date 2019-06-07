@@ -4,35 +4,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
 
     <TextView
         android:id="@+id/tvMealName"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="Meal name"
+        android:background="@color/colorTeal"
+        android:paddingStart="20dp"
+        android:textColor="@color/colorWhite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDietDate" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tvMealTime"
         android:layout_width="150dp"
-        android:layout_height="21dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="20dp"
+        android:textColor="@color/colorWhite"
         android:text="Meal Time"
+        android:background="@color/colorTeal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvMealName"
-        app:layout_constraintTop_toBottomOf="@id/tvDietDate" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tvNutrition"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMealName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMealTime"
+        android:text="Nutritional values:"/>
+
 </android.support.constraint.ConstraintLayout>

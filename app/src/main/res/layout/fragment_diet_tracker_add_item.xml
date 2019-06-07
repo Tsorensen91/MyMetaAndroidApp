@@ -53,6 +53,7 @@
         android:id="@+id/Nutrient"
         android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:background="@color/colorMagenta"
         android:gravity="center_vertical"
@@ -60,19 +61,20 @@
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toStartOf="@+id/tvEnterAmount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/timeSpinner" />
 
     <TextView
         android:id="@+id/tvEnterAmount"
         android:layout_width="100dp"
         android:layout_height="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:background="@color/colorMagenta"
         android:gravity="center"
         android:text="Enter Amount"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/timeSpinner" />
 
     <TextView
         android:id="@+id/tvProtein"
@@ -118,7 +120,7 @@
         android:ems="10"
         android:background="@color/colorGrey"
         android:textColor="@color/colorWhite"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEnterAmount" />
@@ -131,7 +133,7 @@
         android:ems="10"
         android:background="@color/colorGrey"
         android:textColor="@color/colorWhite"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etProtein" />
@@ -144,7 +146,7 @@
         android:ems="10"
         android:background="@color/colorGrey"
         android:textColor="@color/colorWhite"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCarbohydrate" />
@@ -163,17 +165,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFat" />
 
-    <TimePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginEnd="78dp"
-        android:timePickerMode="spinner"
+
+    <TextView
+        android:id="@+id/tvEnterMealTime"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/boxpink"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSelectTime" />
+        app:layout_constraintTop_toBottomOf="@id/etMealName"
+        android:text="Enter Time of Meal" />
+
+    <Spinner
+        android:id="@+id/timeSpinner"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEnterMealTime"
+        android:entries="@array/time_spinner"/>
+
 
 </android.support.constraint.ConstraintLayout>
 

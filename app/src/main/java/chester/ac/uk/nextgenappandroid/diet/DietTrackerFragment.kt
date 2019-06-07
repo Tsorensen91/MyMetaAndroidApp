@@ -54,7 +54,6 @@ class DietTrackerFragment : Fragment(), OnShowFragment {
             val mealInfo = info.split(",").map { it.trim() }
             var nutrition = ""
 
-
             for (x in 2 until mealInfo.size) {
                 nutrition += mealInfo[x]
             }

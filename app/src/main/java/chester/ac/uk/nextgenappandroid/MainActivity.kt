@@ -1,6 +1,8 @@
 package chester.ac.uk.nextgenappandroid
 
+import android.app.ActionBar
 import android.os.Bundle
+import android.support.design.internal.BottomNavigationMenuView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -81,6 +83,16 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        //changes bottomnavbar iconsize to wrap_content.
+        var menuView : BottomNavigationMenuView = navigation.getChildAt(0) as BottomNavigationMenuView
+        for (i in 0 until menuView.childCount ) {
+            val iconView = menuView.getChildAt(i).findViewById<View>(android.support.design.R.id.icon)
+            val layoutParams = iconView.layoutParams
+            val displayMetrics = resources.displayMetrics
+            layoutParams.height = ActionBar.LayoutParams.WRAP_CONTENT
+            layoutParams.width = ActionBar.LayoutParams.WRAP_CONTENT
+        }
+
         backbutton.setOnClickListener {
             onBackPress()
         }
@@ -88,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         preferencesButton.setOnClickListener {
             showFragment(FragmentType.PREFERENCES, true)
         }
+
 
     }
 
