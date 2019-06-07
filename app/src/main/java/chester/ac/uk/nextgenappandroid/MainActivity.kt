@@ -9,7 +9,6 @@ import chester.ac.uk.nextgenappandroid.calendar.CalendarExpandFragment
 import chester.ac.uk.nextgenappandroid.calendar.CalendarFragment
 import chester.ac.uk.nextgenappandroid.condition.*
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerAddItem
-import chester.ac.uk.nextgenappandroid.diet.DietTrackerDay
 import chester.ac.uk.nextgenappandroid.diet.DietTrackerFragment
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerAddItem
 import chester.ac.uk.nextgenappandroid.mail.MailTrackerFragment
@@ -110,7 +109,8 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .hide(activeFragment)
                 .replace(R.id.fragmentContainer, fragment)
-        prevStack.add(activeFragment)
+                .commit()
+        prevStack.push(activeFragment)
         activeFragment = fragment
 
 
@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
                 .hide(activeFragment)
                 .replace(R.id.fragmentContainer, fragment)
                 .commit()
-        prevStack.add(activeFragment)
+        prevStack.push(activeFragment)
         activeFragment = fragment
 
 
@@ -141,7 +141,10 @@ class MainActivity : AppCompatActivity() {
             val frag = prevStack.pop()
             supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, frag).commit()
             activeFragment = frag
-            backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
+
+
+            if (prevStack.isEmpty())
+                backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
         }
     }
 
