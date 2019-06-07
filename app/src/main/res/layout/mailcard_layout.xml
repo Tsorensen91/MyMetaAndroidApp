@@ -3,54 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
-
-    <TextView
-        android:id="@+id/tvFrom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorLightGrey"
-        android:text="@string/tvTitleBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorLightGrey"
-        android:text="@string/tvTitleBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFrom"/>
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/colorLightGrey">
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLightGrey"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Meal name"
+        android:background="@color/colorTeal"
+        android:textColor="@color/colorWhite"
+        android:paddingStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSubject"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/ivMailPicture"
+    <TextView
+        android:id="@+id/tvFrom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLightGrey"
-        android:contentDescription="@string/profilePicture"
+        android:text="@string/tvTitleBox"
+        android:paddingStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+        app:layout_constraintTop_toBottomOf="@id/tvDate"/>
+
+    <TextView
+        android:id="@+id/tvSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvTitleBox"
+        android:paddingStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFrom"/>
 
     <TextView
         android:id="@+id/tvNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLightGrey"
         android:text="@string/tvTitleBox"
+        android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMailPicture"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tvSubject" />
+
+    <ImageView
+        android:id="@+id/ivMailPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Picture of Mail"
+        android:layout_marginTop="5dp"
+        android:paddingStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNotes" />
+
+
 </android.support.constraint.ConstraintLayout>

@@ -35,10 +35,10 @@ class MailRecyclerAdapter (val activity : FragmentActivity): RecyclerView.Adapte
         val cardView = viewHolder.itemView
         val mailItem = list[position]
 
-        cardView.tvDate.text = mailItem.date
-        cardView.tvSubject.text = mailItem.subject
-        cardView.tvFrom.text = mailItem.from
-        cardView.tvNotes.text = mailItem.notes
+        cardView.tvDate.text = "Date:       " + mailItem.date
+        cardView.tvSubject.text = "Subject:       " + mailItem.subject
+        cardView.tvFrom.text = "From:       " + mailItem.from
+        cardView.tvNotes.text = "Notes:       " + mailItem.notes
 
         if (mailItem.photoUri != ""){
             val info = mailItem.photoUri
