@@ -10,14 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
+import chester.ac.uk.nextgenappandroid.OnShowFragment
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_calendar_expand.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class CalendarExpandFragment : Fragment() {
+class CalendarExpandFragment : Fragment(), OnShowFragment {
 
     private lateinit var cExpandLayout: RecyclerView.LayoutManager
-    private var expandAdapter = CalendarAdapter()
+
+    private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    private var date = Date()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -25,18 +30,38 @@ class CalendarExpandFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_calendar_expand, container, false)
     }
 
+    private val list = mutableListOf<CalendarEvent>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         cExpandLayout = LinearLayoutManager(context)
 
+        val entries = CalendarData.calendarEntries
+        for(entry in entries) {
+            if(entry.date.date == date.date && entry.date.month == date.month && entry.date.year == date.year) {
+                list.addAll(entry.events)
+            }
+        }
         rvCalendarHourSlots.layoutManager = cExpandLayout
-        rvCalendarHourSlots.adapter = expandAdapter
+        rvCalendarHourSlots.adapter = CalendarAdapter(list)
 
         addCalendarEventButton.setOnClickListener {
-            (activity as MainActivity).showFragment(FragmentType.CALENDAR_ADD, true)
+
+            val bundle = Bundle()
+            bundle.putString("calendarExpandDate", formatter.format(date))
+
+            (activity as MainActivity).showFragment(FragmentType.CALENDAR_ADD, bundle, FragmentType.CALENDAR_EXPANDED, true)
         }
 
+    }
+
+    override fun onShow(bundle: Bundle) {
+        if (bundle.getString("from") == FragmentType.CALENDAR.desc) {
+
+            date = formatter.parse(bundle.getString("calendarDate"))
+
+        }
     }
 
 }
