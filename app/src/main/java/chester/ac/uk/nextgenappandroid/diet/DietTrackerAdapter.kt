@@ -16,12 +16,10 @@ class DietTrackerAdapter (var context: Context): RecyclerView.Adapter<DietTracke
 
 
     private lateinit var mealLayoutManager: RecyclerView.LayoutManager
-    //private var mealAdapter = MealTrackerAdapter()
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.diet_tracker_card_layout, viewGroup,false)
-
 
 
         return ViewHolder(view)
@@ -38,7 +36,6 @@ class DietTrackerAdapter (var context: Context): RecyclerView.Adapter<DietTracke
         var day = DietTrackerData.dayList[position].mealDate.date
         var month =  DietTrackerData.dayList[position].mealDate.month+1 //month is 0-11
         var year =  DietTrackerData.dayList[position].mealDate.year+1900 //year takes away 1900.
-        val listSize = DietTrackerData.dayList.size
         cardView.tvDietDate.text = "$day/$month/$year"
 /*
         val mealListForDay = DietTrackerData.dayList[position].mealList
@@ -55,7 +52,7 @@ class DietTrackerAdapter (var context: Context): RecyclerView.Adapter<DietTracke
 
         cardView.rvMealTracker.layoutManager = mealLayoutManager
 
-        //cardView.rvMealTracker.adapter = mealAdapter
+        cardView.rvMealTracker.adapter = MealTrackerAdapter(position, DietTrackerData.dayList[position].mealList.size)
 
 
     }

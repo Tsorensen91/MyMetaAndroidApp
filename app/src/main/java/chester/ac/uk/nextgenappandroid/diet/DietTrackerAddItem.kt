@@ -29,9 +29,10 @@ class DietTrackerAddItem : Fragment() {
 //            val mealName = etMealName.text
 //            (activity as MainActivity).fragmentSwap(getString(R.string.diettracker), ""+mealName+", 10:02pm, 200, 500")
 
-            val mealName = etMealName.text
             val bundle = Bundle()
-            bundle.putString("dietTrackerMeal", ""+mealName+", 10:02pm, 200, 500")
+
+            val time = datePicker.hour.toString()
+            bundle.putString("dietTrackerMeal", "" + etMealName.text + ","+time+":02pm," + etCarbohydrate.text + "," + etFat.text + "," + etProtein.text)
             (activity as MainActivity).showFragment(FragmentType.DIET_TRACKER, bundle, FragmentType.DIET_TRACKER_ADD_ITEM, false)
         }
     }

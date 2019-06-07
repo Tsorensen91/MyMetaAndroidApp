@@ -69,20 +69,18 @@
     </android.support.v7.widget.Toolbar>
 
 
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
-        app:menu="@menu/navigation_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorMagenta"
         android:minHeight="?android:attr/actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:labelVisibilityMode="unlabeled"
+        app:itemBackground="@drawable/navbarhighlight"
         app:itemIconTint="@color/colorWhite"
         app:itemTextColor="@color/colorWhite"
-        app:itemBackground="@drawable/navbarhighlight"
-        />
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_items" />
 
     <include
         android:id="@+id/fragmentContainer"
