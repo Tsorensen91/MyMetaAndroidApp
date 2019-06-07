@@ -24,13 +24,14 @@ class CalendarExpandFragment : Fragment(), OnShowFragment {
     private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
     private var date = Date()
 
+    private val list = mutableListOf<CalendarEvent>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar_expand, container, false)
     }
 
-    private val list = mutableListOf<CalendarEvent>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

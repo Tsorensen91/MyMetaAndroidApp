@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.calendar_expand_card_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarAdapter(val list: MutableList<CalendarEvent>) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
+class UpcomingEventsAdapter(val list: MutableList<CalendarEvent>) : RecyclerView.Adapter<UpcomingEventsAdapter.ViewHolder>() {
 
 
     val formatter = SimpleDateFormat("HH:mm", Locale.ENGLISH)
