@@ -31,7 +31,7 @@ class DietTrackerAddItem : Fragment() {
 
             val bundle = Bundle()
 
-            val time = datePicker.hour.toString()
+            val time = 0
             bundle.putString("dietTrackerMeal", "" + etMealName.text + ","+time+":02pm," + etCarbohydrate.text + "," + etFat.text + "," + etProtein.text)
             (activity as MainActivity).showFragment(FragmentType.DIET_TRACKER, bundle, FragmentType.DIET_TRACKER_ADD_ITEM, false)
         }
