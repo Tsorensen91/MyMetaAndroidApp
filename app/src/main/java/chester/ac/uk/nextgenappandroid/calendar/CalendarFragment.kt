@@ -12,12 +12,14 @@ import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_calendar.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
 class CalendarFragment : Fragment() {
 
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    private val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -62,9 +64,10 @@ class CalendarFragment : Fragment() {
                             val isInside = mX >= rectF.left && mX <= rectF.right && mY >= rectF.top && mY <= rectF.bottom
 
                             if (isInside) {
-                                Log.i("Click coords", "X: $mX Y: $mY Date: ${cell.date}")
 
-                                (activity as MainActivity).showFragment(FragmentType.CALENDAR_EXPANDED, Bundle(), FragmentType.CALENDAR, true)
+                                val bundle = Bundle()
+                                bundle.putString("calendarDate", formatter.format(cell.date))
+                                (activity as MainActivity).showFragment(FragmentType.CALENDAR_EXPANDED, bundle, FragmentType.CALENDAR, true)
                             }
                         }
 
