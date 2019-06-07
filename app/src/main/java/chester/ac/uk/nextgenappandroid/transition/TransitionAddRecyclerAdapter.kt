@@ -32,7 +32,9 @@ class TransitionAddRecyclerAdapter: RecyclerView.Adapter<TransitionAddRecyclerAd
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.tvPillarQuestion.text = steps[position]
+
+        val cardView = viewHolder.itemView
+        cardView.tvPillarQuestion.text = steps[position]
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){

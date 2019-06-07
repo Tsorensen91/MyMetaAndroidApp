@@ -1,9 +1,7 @@
 package chester.ac.uk.nextgenappandroid.mail
 
 
-object MailItem {
-
-    var name = ""
+class MailItem (var name: String){
     var date = ""
     var subject = ""
     var photoUri = ""
