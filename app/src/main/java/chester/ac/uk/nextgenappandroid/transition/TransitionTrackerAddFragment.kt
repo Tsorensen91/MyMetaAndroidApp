@@ -18,14 +18,20 @@ class TransitionTrackerAddFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
 
+
+
+
+        return inflater.inflate(R.layout.fragment_transition_tracker_add, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         layoutManager = LinearLayoutManager(context)
         rvTransitionProcess.layoutManager = layoutManager
         adapter = TransitionAddRecyclerAdapter()
         rvTransitionProcess.adapter = adapter
 
-
-
-        return inflater.inflate(R.layout.fragment_transition_tracker_add, container, false)
     }
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
