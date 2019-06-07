@@ -10,10 +10,13 @@ enum class EventType {
     WORK
 }
 
-class CalendarEvent(title: String, startTime: Date, endTime: Date, type: EventType, sendNotification: Boolean, location: String)
+class CalendarEvent(val title: String, val startTime: Date, val endTime: Date, val type: EventType, sendNotification: Boolean, location: String)
 
-class CalendarEntry(date: Date) {
+class CalendarEntry(val date: Date) {
 
-    val events = listOf<CalendarEvent>()
+    val events = mutableListOf<CalendarEvent>()
 
+    fun addEvent(event: CalendarEvent) {
+        events.add(event)
+    }
 }
