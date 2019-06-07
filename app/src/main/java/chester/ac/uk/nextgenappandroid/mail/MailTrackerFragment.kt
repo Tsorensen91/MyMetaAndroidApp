@@ -32,7 +32,11 @@ class MailTrackerFragment : Fragment(), OnShowFragment{
     override fun onShow(bundle: Bundle) {
         when (bundle.getString("from")) {
             FragmentType.MAIL_TRACKER_ADD_ITEM.desc -> {
-                //use maildata class to add mail passed through.
+                val info = bundle.getString("mailTrackerAdd")
+                val mailInfo = info.split(",").map { it.trim() }
+                var newMail = MailItem(mailInfo[0], mailInfo[1], mailInfo[2], mailInfo[3], mailInfo[4])
+                MailTrackerData.mailList.add(newMail)
+
                 }
             }
     }
@@ -43,7 +47,7 @@ class MailTrackerFragment : Fragment(), OnShowFragment{
 
         layoutManager = LinearLayoutManager(activity)
         rvMailTracker.layoutManager = layoutManager
-        adapter = MailRecyclerAdapter()
+        adapter = MailRecyclerAdapter(activity!!)
         rvMailTracker.adapter = adapter
 
         imAdd.setOnClickListener {
