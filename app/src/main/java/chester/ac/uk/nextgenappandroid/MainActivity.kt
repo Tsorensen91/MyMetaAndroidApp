@@ -23,15 +23,20 @@ enum class FragmentType(val desc: String) {
     CALENDAR("FragmentCalendar"),
     CALENDAR_EXPANDED("FragmentCalendarExpand"),
     CALENDAR_ADD("FragmentCalendarAdd"),
+
+
     TRANSITION_TRACKER("FragmentTransitionTracker"),
     TRANSITION_TRACKER_ADD("FragmentTransitionTrackerAdd"),
+
     CONDITION_HUB("FragmentConditionHub"),
     CONDITION_HUB_EDIT_ABOUT("FragmentConditionHubEditAbout"),
     CONDITION_HUB_MY_CONDITION("FragmentConditionHubMyCondition"),
     CONDITION_HUB_MY_MEDICATION("FragmentConditionHubMyMedication"),
     CONDITION_HUB_MY_PICTURE("ConditionHubMyPicture"),
+
     MAIL_TRACKER("FragmentMailTracker"),
     MAIL_TRACKER_ADD_ITEM("FragmentMailTrackerAddItem"),
+
     DIET_TRACKER("FragmentDietTracker"),
     DIET_TRACKER_ADD_ITEM("FragmentDietTrackerAddItem"),
     PREFERENCES("FragmentPreferences")
@@ -43,9 +48,8 @@ interface OnShowFragment {
 
 class MainActivity : AppCompatActivity() {
 
-    var activeFragment: Fragment = CalendarFragment()
-
-    val prevStack = Stack<Fragment>()
+    private var activeFragment: FragmentType? = null
+    private var prevFragment: FragmentType? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        activeFragment = FragmentType.CALENDAR
         showFragment(FragmentType.CALENDAR, false)
 
         navigation.selectedItemId = R.id.calendarButton
@@ -60,24 +65,19 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.transitionButton -> {
                     showFragment(FragmentType.TRANSITION_TRACKER, false)
-                    backbutton.visibility = View.INVISIBLE
                 }
 
                 R.id.conditionButton -> {
                     showFragment(FragmentType.CONDITION_HUB, false)
-                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.calendarButton -> {
                     showFragment(FragmentType.CALENDAR, false)
-                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.mailtrackerButton -> {
                     showFragment(FragmentType.MAIL_TRACKER, false)
-                    backbutton.visibility = View.INVISIBLE
                 }
                 R.id.diettrackerButton -> {
                     showFragment(FragmentType.DIET_TRACKER, false)
-                    backbutton.visibility = View.INVISIBLE
                 }
             }
             true
@@ -94,7 +94,63 @@ class MainActivity : AppCompatActivity() {
         }
 
         backbutton.setOnClickListener {
-            onBackPress()
+            if (activeFragment != null) {
+
+                when (activeFragment) {
+
+                    FragmentType.CALENDAR -> TODO()
+                    FragmentType.CALENDAR_EXPANDED -> {
+                        backPressed(FragmentType.CALENDAR)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.CALENDAR_ADD -> backPressed(FragmentType.CALENDAR_EXPANDED)
+                    FragmentType.TRANSITION_TRACKER -> TODO()
+                    FragmentType.TRANSITION_TRACKER_ADD -> {
+                        backPressed(FragmentType.TRANSITION_TRACKER)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.CONDITION_HUB -> TODO()
+                    FragmentType.CONDITION_HUB_EDIT_ABOUT -> {
+                        backPressed(FragmentType.CONDITION_HUB)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.CONDITION_HUB_MY_CONDITION -> {
+                        backPressed(FragmentType.CONDITION_HUB)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.CONDITION_HUB_MY_MEDICATION -> {
+                        backPressed(FragmentType.CONDITION_HUB)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.CONDITION_HUB_MY_PICTURE -> {
+                        backPressed(FragmentType.CONDITION_HUB)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.MAIL_TRACKER -> TODO()
+                    FragmentType.MAIL_TRACKER_ADD_ITEM -> {
+                        backPressed(FragmentType.MAIL_TRACKER)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.DIET_TRACKER -> TODO()
+                    FragmentType.DIET_TRACKER_ADD_ITEM -> {
+                        backPressed(FragmentType.DIET_TRACKER)
+                        backbutton.visibility = View.INVISIBLE
+                    }
+                    FragmentType.PREFERENCES -> {
+                        if (prevFragment != null)
+                            backPressed(prevFragment!!)
+
+                        if (prevFragment == FragmentType.CALENDAR
+                                || prevFragment == FragmentType.TRANSITION_TRACKER
+                                || prevFragment == FragmentType.CONDITION_HUB
+                                || prevFragment == FragmentType.MAIL_TRACKER
+                                || prevFragment == FragmentType.DIET_TRACKER)
+                            backbutton.visibility = View.INVISIBLE
+                    }
+                    null -> TODO()
+                }
+
+            }
         }
 
         preferencesButton.setOnClickListener {
@@ -104,60 +160,59 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun backPressed(to: FragmentType) {
+        val aFragment = getFragmentClass(activeFragment!!)
+        val fragment = getFragmentClass(to)
+
+        supportFragmentManager.beginTransaction()
+                .hide(aFragment)
+                .replace(R.id.fragmentContainer, fragment)
+                .commit()
+        activeFragment = to
+    }
+
     fun showFragment(type: FragmentType, bundle: Bundle, from: FragmentType, showBackButton: Boolean) {
 
         val fragment = getFragmentClass(type)
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment, type.desc).commit()
 
-        backbutton.visibility = View.INVISIBLE
-        if (!prevStack.isEmpty()) {
-            backbutton.visibility = View.VISIBLE
+        if (activeFragment != null) {
+            val aFragment = getFragmentClass(activeFragment!!)
+            if (fragment is OnShowFragment) {
+                bundle.putString("from", from.desc)
+                fragment.onShow(bundle)
+            }
+
+            backbutton.visibility = View.INVISIBLE
+            if (showBackButton)
+                backbutton.visibility = View.VISIBLE
+
+            supportFragmentManager.beginTransaction()
+                    .hide(aFragment)
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit()
+            prevFragment = activeFragment
+            activeFragment = type
         }
-
-        if (fragment is OnShowFragment) {
-            bundle.putString("from", from.desc)
-            fragment.onShow(bundle)
-        }
-
-        supportFragmentManager.beginTransaction()
-                .hide(activeFragment)
-                .replace(R.id.fragmentContainer, fragment)
-                .commit()
-        prevStack.push(activeFragment)
-        activeFragment = fragment
-
-
     }
 
     fun showFragment(type: FragmentType, showBackButton: Boolean) {
         val fragment = getFragmentClass(type)
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment, type.desc).commit()
 
-        backbutton.visibility = View.INVISIBLE
-        if (!prevStack.isEmpty()) {
-            backbutton.visibility = View.VISIBLE
-        }
+        if (activeFragment != null) {
+            val aFragment = getFragmentClass(activeFragment!!)
 
-        supportFragmentManager.beginTransaction()
-                .hide(activeFragment)
-                .replace(R.id.fragmentContainer, fragment)
-                .commit()
-        prevStack.push(activeFragment)
-        activeFragment = fragment
+            backbutton.visibility = View.INVISIBLE
+            if (showBackButton)
+                backbutton.visibility = View.VISIBLE
 
-
-    }
-
-    private fun onBackPress() {
-
-        if (!prevStack.isEmpty()) {
-            val frag = prevStack.pop()
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, frag).commit()
-            activeFragment = frag
-
-
-            if (prevStack.isEmpty())
-                backbutton.visibility = View.INVISIBLE //TODO: check if we're in a secondary page, if the next fragment requires a back button then show one
+            supportFragmentManager.beginTransaction()
+                    .hide(aFragment)
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit()
+            prevFragment = activeFragment
+            activeFragment = type
         }
     }
 

@@ -14,7 +14,7 @@ class MailRecyclerAdapter : RecyclerView.Adapter<MailRecyclerAdapter.ViewHolder>
     var list = mutableListOf<MailItem>()
 
     init{
-        list.add(MailItem("", 1))
+
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {

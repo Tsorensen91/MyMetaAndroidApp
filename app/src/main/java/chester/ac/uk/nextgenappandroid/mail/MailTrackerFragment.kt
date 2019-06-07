@@ -47,7 +47,7 @@ class MailTrackerFragment : Fragment(), OnShowFragment{
         rvMailTracker.adapter = adapter
 
         imAdd.setOnClickListener {
-            (activity as MainActivity).showFragment(FragmentType.MAIL_TRACKER_ADD_ITEM, true)
+            (activity as MainActivity).showFragment(FragmentType.MAIL_TRACKER_ADD_ITEM, true )
         }
     }
 
