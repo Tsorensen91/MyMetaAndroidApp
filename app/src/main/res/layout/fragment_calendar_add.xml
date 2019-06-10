@@ -77,7 +77,7 @@
         android:layout_height="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@color/colorMagenta"
         android:gravity="center"
         android:text="Enter a Location:"
@@ -177,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="148dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorTeal"
         android:text="Submit"
         android:textColor="@color/colorWhite"
@@ -211,20 +211,20 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="Turn on push notifications"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseEventTypeSpinner" />
 
     <Switch
         android:id="@+id/switch1"
-        style="@style/SCBSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="22dp"
+        android:theme="@style/SCBSwitch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseEventTypeSpinner" />
 
