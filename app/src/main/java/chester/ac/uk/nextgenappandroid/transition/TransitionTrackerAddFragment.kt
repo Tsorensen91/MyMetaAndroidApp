@@ -17,6 +17,7 @@ import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_transition_tracker_add.*
 import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.*
 import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.view.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -27,7 +28,7 @@ class TransitionTrackerAddFragment : Fragment() {
     private lateinit var spinnerAdapter: ArrayAdapter<CharSequence>
     var transitionTime = ""
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-
+    private val formatter = SimpleDateFormat("dd/MM/yyy", Locale.ENGLISH)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -38,7 +39,7 @@ class TransitionTrackerAddFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var transitionList = arrayOf(1,1,1,1,1,1,1,1,1)
+        val transitionList = arrayOf(1, 1, 1, 1, 1, 1, 1, 1, 1)
 
         layoutManager = LinearLayoutManager(context)
         rvTransitionProcess.layoutManager = layoutManager
@@ -50,11 +51,29 @@ class TransitionTrackerAddFragment : Fragment() {
 
         transitionTrackerSubmit.setOnClickListener {
             //class TransitionItem (var time: String, date : String, var notes: String, var transitionList : List<TransitionPillarStep>)
-            val stepDate = "" + daySpinner.selectedItem + " " + monthSpinner.selectedItem + " " + yearSpinner.selectedItem
 
-            var newStep = TransitionItem(transitionTime, stepDate, etAddNotes.text.toString(), transitionList)
+            val month = when (monthSpinner.selectedItem) {
+                "Jan" -> 1
+                "Feb" -> 2
+                "Mar" -> 3
+                "Apr" -> 4
+                "May" -> 5
+                "Jun" -> 6
+                "Jul" -> 7
+                "Aug" -> 8
+                "Sep" -> 9
+                "Oct" -> 10
+                "Nov" -> 11
+                "Dec" -> 12
+                else -> 1 //Should not reach this
+            }
+
+            val stepDate = "${daySpinner.selectedItem}/$month/${yearSpinner.selectedItem}"
+
+            val newStep = TransitionItem(transitionTime, formatter.parse(stepDate), etAddNotes.text.toString(), transitionList)
 
             TransitionTrackerData.list.add(newStep)
+            TransitionTrackerData.list.sortByDescending { it.date }
             (activity as MainActivity).showFragment(FragmentType.TRANSITION_TRACKER, false)
         }
 
@@ -67,6 +86,7 @@ class TransitionTrackerAddFragment : Fragment() {
         hourSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
+
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = hourSpinner.getItemAtPosition(position).toString()
                 transitionTime = selectedItem
@@ -88,7 +108,7 @@ class TransitionTrackerAddFragment : Fragment() {
         yearSpinner.adapter = yearSpinnerAdapter
 
         val yearStringArray = arrayListOf<String>()
-        for (i in (currentYear - 100)..currentYear)
+        for (i in (currentYear - 10)..(currentYear + 10))
             yearStringArray.add(i.toString())
 
         yearSpinnerAdapter.addAll(yearStringArray.reversed())
@@ -111,25 +131,27 @@ class TransitionTrackerAddFragment : Fragment() {
 
             }
         }
+        yearSpinner.setSelection(10)
 
         val monthSpinnerAdapter = ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, android.R.id.text1)
         monthSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         monthSpinner.adapter = monthSpinnerAdapter
 
-        for(i in 0 until months.size)
+        for (i in 0 until months.size)
             monthSpinnerAdapter.add(months[i])
 
         monthSpinnerAdapter.notifyDataSetChanged()
-        monthSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        monthSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
+
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
                 calendar.set(Calendar.MONTH, position)
                 val daysForMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
                 daySpinnerAdapter.clear()
-                for(i in 0 until  daysForMonth){
+                for (i in 0 until daysForMonth) {
                     daySpinnerAdapter.add((i + 1).toString())
                 }
                 daySpinnerAdapter.notifyDataSetChanged()

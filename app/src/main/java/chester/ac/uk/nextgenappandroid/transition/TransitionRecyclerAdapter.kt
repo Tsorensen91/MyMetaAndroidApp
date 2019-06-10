@@ -10,10 +10,15 @@ import chester.ac.uk.nextgenappandroid.R
 import chester.ac.uk.nextgenappandroid.R.id.transitionBarBottom
 import kotlinx.android.synthetic.main.card_layout.view.*
 import kotlinx.android.synthetic.main.firstcard_layout.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapter<TransitionRecyclerAdapter.ViewHolder>() {
 
     val dayList = TransitionTrackerData.list
+    private val formatter = SimpleDateFormat("dd/MM/yyy", Locale.ENGLISH)
+
+    private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return 1 else return 2;
@@ -43,7 +48,8 @@ class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapt
         if (position > 0) {
             val currentDay = dayList[position-1] //take firstcard layout number away.
 
-            cardView.transitionDate.text = currentDay.date
+            val d = currentDay.date
+            cardView.transitionDate.text = "${d.date} ${months[d.month]} ${d.year + 1900}"
             cardView.tvTransitionTimeDisplay.text = currentDay.time
             cardView.tvTransitionAppointmentNotesDisplay.text = currentDay.notes
             cardView.transitionProcess.text = currentDay.transitionList[0].toString()
