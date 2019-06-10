@@ -5,13 +5,18 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import chester.ac.uk.nextgenappandroid.FragmentType
+import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.fragment_transition_tracker_add.*
+import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.*
+import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.view.*
 import java.util.*
 
 
@@ -20,16 +25,12 @@ class TransitionTrackerAddFragment : Fragment() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: TransitionAddRecyclerAdapter
     private lateinit var spinnerAdapter: ArrayAdapter<CharSequence>
-    var stepType = ""
+    var transitionTime = ""
     private val months = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-
-
-
 
         return inflater.inflate(R.layout.fragment_transition_tracker_add, container, false)
     }
@@ -45,21 +46,32 @@ class TransitionTrackerAddFragment : Fragment() {
         setupArrayAdapters()
         setupDateAdapters()
 
+        transitionTrackerSubmit.setOnClickListener {
+            val bundle = Bundle()
+            //class TransitionItem (var time: String, date : String, var notes: String, var transitionList : List<TransitionPillarStep>)
+            val stepDate = "" + daySpinner.selectedItem + " " + monthSpinner.selectedItem + " " + yearSpinner.selectedItem
 
+            var transitionList = mutableListOf<TransitionPillarStep>()
+            var count = rvTransitionProcess.adapter!!.itemCount
 
+            var newStep = TransitionItem(transitionTime, stepDate, etAddNotes.text.toString(), transitionList)
+
+            bundle.putString("transitionStepAdd", "no")
+            (activity as MainActivity).showFragment(FragmentType.TRANSITION_TRACKER, bundle, FragmentType.TRANSITION_TRACKER_ADD, false)
+        }
 
     }
 
     private fun setupArrayAdapters() {
-        spinnerAdapter = ArrayAdapter.createFromResource(activity!!, R.array.transition_type, android.R.layout.simple_spinner_item)
+        spinnerAdapter = ArrayAdapter.createFromResource(activity!!, R.array.time_meal_spinner, android.R.layout.simple_spinner_item)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        stepSpinner.adapter = spinnerAdapter
-        stepSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        hourSpinner.adapter = spinnerAdapter
+        hourSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedItem = stepSpinner.getItemAtPosition(position).toString()
-                stepType = selectedItem
+                val selectedItem = hourSpinner.getItemAtPosition(position).toString()
+                transitionTime = selectedItem
             }
         }
     }

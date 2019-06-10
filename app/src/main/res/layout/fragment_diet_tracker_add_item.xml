@@ -191,7 +191,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEnterMealTime"
-        android:entries="@array/time_spinner"/>
+        android:entries="@array/time_meal_spinner"/>
 
 
 </android.support.constraint.ConstraintLayout>

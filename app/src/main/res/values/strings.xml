@@ -5,7 +5,8 @@
     <string name="selected_item">Selected item:</string>
 
 
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="editbutton">editButton</string>
     <string name="select_your_ethnicity">Select Your Ethnicity:</string>
     <string name="enter_the_name_of_your_hospital">Enter the Name of Your Hospital:</string>
@@ -74,6 +75,33 @@
     </string-array>
 
     <string-array name="time_spinner">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="time_meal_spinner">
         <item>00:00</item>
         <item>01:00</item>
         <item>02:00</item>
@@ -98,10 +126,6 @@
         <item>21:00</item>
         <item>22:00</item>
         <item>23:00</item>
-    </string-array>
-
-    <string-array name="transition_type">
-        <item>"appointment"</item>
     </string-array>
 
     <string-array name="time_spinner_min">

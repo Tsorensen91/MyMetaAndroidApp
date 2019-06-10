@@ -52,7 +52,7 @@ class DietTrackerAddItem : Fragment() {
     }
 
     private fun setupArrayAdapters() {
-        adapter = ArrayAdapter.createFromResource(activity!!, R.array.time_spinner, android.R.layout.simple_spinner_item)
+        adapter = ArrayAdapter.createFromResource(activity!!, R.array.time_meal_spinner, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         timeSpinner.adapter = adapter
         timeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

@@ -8,45 +8,19 @@
 
 
     <TextView
-        android:id="@+id/tvStepType"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorMagenta"
-        android:gravity="center"
-        android:text="Select Step Type:"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tvTransitionSelectTime"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorMagenta"
         android:gravity="center"
         android:text="Select Time and Date:"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stepSpinner" />
-
-    <Spinner
-        android:id="@+id/stepSpinner"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStepType" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/hourSpinner"
@@ -137,7 +111,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvTransitionProcess"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"

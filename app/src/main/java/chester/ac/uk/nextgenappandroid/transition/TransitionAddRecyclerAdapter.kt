@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.view.*
 class TransitionAddRecyclerAdapter: RecyclerView.Adapter<TransitionAddRecyclerAdapter.ViewHolder>() {
 
 
-    val steps = listOf<String>("I understand the transition process and have been given a clear plan for my own transition going forward ",
+    val steps = listOf("I understand the transition process and have been given a clear plan for my own transition going forward ",
             "I have all the information and resources I need to support my transition, and in a format that suits me",
             "I understand and can explain my condition including what it is and how it works, what my symptoms are and what causes them, the medication and treatments I follow and why (including diet management)",
             "I feel that care is being taken to understand my individual circumstances and needs and to make sure these are met in my future care",
