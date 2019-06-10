@@ -82,7 +82,7 @@ class CalendarFragment : Fragment() {
                             val rectF = cell.getRectF()
                             val isInside = mX >= rectF.left && mX <= rectF.right && mY >= rectF.top && mY <= rectF.bottom
 
-                            if (isInside) {
+                            if (isInside && cell.date.month == v.currentDate.time.month) {
 
                                 val bundle = Bundle()
                                 bundle.putString("calendarDate", formatter.format(cell.date))
