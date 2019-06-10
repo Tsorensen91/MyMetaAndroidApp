@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.FragmentType
 import chester.ac.uk.nextgenappandroid.MainActivity
 import chester.ac.uk.nextgenappandroid.R
+import chester.ac.uk.nextgenappandroid.R.id.transitionBarBottom
 import kotlinx.android.synthetic.main.card_layout.view.*
 import kotlinx.android.synthetic.main.firstcard_layout.view.*
 
 class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapter<TransitionRecyclerAdapter.ViewHolder>() {
+
+    val dayList = TransitionTrackerData.list
 
     override fun getItemViewType(position: Int): Int {
         if (position == 0) return 1 else return 2;
@@ -31,16 +34,36 @@ class TransitionRecyclerAdapter(val activity: MainActivity) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return dayList.size+1 //add 1 for firstcard layout
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val cardView = viewHolder.itemView
+
         if (position > 0) {
-            viewHolder.itemView.transitionDate.text = "20/20/2020"
-            viewHolder.itemView.transitionItemNotes.text = "placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment placeholder many words on an appointment"
+            val currentDay = dayList[position-1] //take firstcard layout number away.
+
+            cardView.transitionDate.text = currentDay.date
+            cardView.tvTransitionTimeDisplay.text = currentDay.time
+            cardView.tvTransitionAppointmentNotesDisplay.text = currentDay.notes
+            cardView.transitionProcess.text = currentDay.transitionList[0].toString()
+            cardView.infoAndResources.text = currentDay.transitionList[1].toString()
+            cardView.myCondition.text = currentDay.transitionList[2].toString()
+            cardView.individualCare.text = currentDay.transitionList[3].toString()
+            cardView.consulting.text = currentDay.transitionList[4].toString()
+            cardView.reflection.text = currentDay.transitionList[5].toString()
+            cardView.communicating.text = currentDay.transitionList[6].toString()
+            cardView.meeting.text = currentDay.transitionList[7].toString()
+            cardView.confidence.text = currentDay.transitionList[8].toString()
+
         }
         if (position == itemCount-1) {
-            viewHolder.itemView.transitionBarBottom.visibility = View.INVISIBLE
+            if (cardView.transitionBarBottom != null) {
+                cardView.transitionBarBottom.visibility = View.INVISIBLE
+            } else {
+                cardView.transitionBarAddBottom.visibility = View.INVISIBLE
+            }
+
         }
 
 
