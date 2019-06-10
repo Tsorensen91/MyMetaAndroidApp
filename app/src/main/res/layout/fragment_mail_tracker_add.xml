@@ -140,10 +140,10 @@
     <Button
         android:id="@+id/mailSubmitButton"
         android:layout_width="wrap_content"
-        android:layout_height="31dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="162dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:background="@color/colorTeal"
         android:text="Submit"
         android:textColor="@color/colorWhite"

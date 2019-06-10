@@ -22,7 +22,7 @@ class TransitionAddRecyclerAdapter: RecyclerView.Adapter<TransitionAddRecyclerAd
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_layout, viewGroup,false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.transition_tracker_add_card_layout, viewGroup,false)
         return ViewHolder(view)
     }
 
@@ -32,7 +32,6 @@ class TransitionAddRecyclerAdapter: RecyclerView.Adapter<TransitionAddRecyclerAd
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         val cardView = viewHolder.itemView
         cardView.tvPillarQuestion.text = steps[position]
     }

@@ -34,11 +34,9 @@
             app:bsb_second_track_color="@color/colorMagenta"
             app:bsb_section_count="6"
             app:bsb_section_text_position="below_section_mark"
-            app:bsb_show_section_mark="true"
-            app:bsb_show_section_text="true"
             app:bsb_show_thumb_text="true"
-            app:bsb_thumb_text_size="18sp"
             app:bsb_touch_to_seek="true"
+            app:bsb_hide_bubble="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPillarQuestion" />
