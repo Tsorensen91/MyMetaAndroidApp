@@ -7,10 +7,10 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/transitionItemNotes"
+            android:id="@+id/transitionBackground"
             android:layout_width="0dp"
             android:layout_height="205dp"
             android:background="@color/colorLightGrey"
@@ -30,14 +30,14 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transitionBarTop"
-            android:layout_width="3dp"
+            android:layout_width="2dp"
             android:layout_height="40dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="80dp"
             android:src="@color/colorGrey"
             app:layout_constraintBottom_toTopOf="@+id/transitionCircle"
-            app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
-            app:layout_constraintStart_toEndOf="@id/transitionDate"
+            app:layout_constraintEnd_toStartOf="@id/transitionBackground"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatImageView
@@ -45,27 +45,24 @@
             android:layout_width="2dp"
             android:layout_height="145dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="72dp"
             android:src="@color/colorGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@id/transitionBackground"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/transitionDate"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transitionCircle"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="80dp"
             android:src="@drawable/circleoutline"
             app:layout_constraintBottom_toTopOf="@+id/transitionBarBottom"
-            app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
-            app:layout_constraintHorizontal_bias="0.529"
-            app:layout_constraintStart_toEndOf="@id/transitionDate"
+            app:layout_constraintEnd_toStartOf="@id/transitionBackground"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transitionBarTop" />
 
         <TextView
@@ -80,8 +77,8 @@
             android:text="Transition Process"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView4"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/transitionProcess"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -96,8 +93,8 @@
             android:text="Info and Resources"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView12"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/infoAndResources"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess" />
 
         <TextView
@@ -112,8 +109,8 @@
             android:text="My Condition"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView7"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/myCondition"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvInfoAndResources" />
 
         <TextView
@@ -128,9 +125,9 @@
             android:text="Individual Care"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView10"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
-            app:layout_constraintTop_toBottomOf="@+id/tvMyCondition" />
+            app:layout_constraintEnd_toStartOf="@id/individualCare"
+            app:layout_constraintStart_toStartOf="@id/transitionBackground"
+            app:layout_constraintTop_toBottomOf="@id/tvMyCondition" />
 
         <TextView
             android:id="@+id/tvConsulting"
@@ -144,8 +141,8 @@
             android:text="Consulting"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView9"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/consulting"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvIndiviualCare" />
 
         <TextView
@@ -160,13 +157,13 @@
             android:text="Reflection"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView5"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/reflection"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvConsulting" />
 
         <TextView
             android:id="@+id/tvCommunicating"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="15dp"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
@@ -176,8 +173,8 @@
             android:text="Communicating My Care"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView8"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/communicating"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvReflection" />
 
         <TextView
@@ -192,8 +189,8 @@
             android:text="Meeting Adult Care"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView11"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/meeting"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvCommunicating" />
 
         <TextView
@@ -208,24 +205,24 @@
             android:text="Confidence In Transition"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView12"
-            app:layout_constraintStart_toStartOf="@+id/transitionItemNotes"
+            app:layout_constraintEnd_toStartOf="@+id/confidence"
+            app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvMeetingAdultCare" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/transitionProcess"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="10dp"
             android:background="@color/colorTeal"
             android:gravity="center_vertical"
-            android:textColor="@color/colorWhite"
             android:radius="5dp"
+            android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/transitionItemNotes" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/confidence"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -233,10 +230,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/meeting" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/meeting"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -244,10 +241,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/communicating" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/individualCare"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -255,10 +252,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/myCondition" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/consulting"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -266,10 +263,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/individualCare" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/communicating"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -277,10 +274,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/reflection" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/myCondition"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -288,10 +285,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/infoAndResources" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/infoAndResources"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -299,10 +296,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/transitionProcess" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/reflection"
             android:layout_width="40dp"
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
@@ -310,27 +307,49 @@
             android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/consulting" />
 
         <TextView
-            android:id="@+id/tvTransitionAppointentName"
+            android:id="@+id/tvTransitionTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Appointment Name:"
+            android:layout_marginTop="10dp"
+            android:text="Appointment time:"
             android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@+id/transitionBarTop"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTransitionAppointentNotes"
+            android:id="@+id/tvTransitionTimeDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="10:00"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/transitionBarTop"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTransitionAppointmentNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="Notes:"
             android:textSize="8sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvTransitionAppointentName"
-            tools:layout_editor_absoluteX="105dp" />
+            app:layout_constraintStart_toStartOf="@id/transitionBackground"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransitionTime" />
+
+        <TextView
+            android:id="@+id/tvTransitionAppointmentNotesDisplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Notes About Appointment"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@id/transitionBackground"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransitionTime" />
 
     </android.support.constraint.ConstraintLayout>
 

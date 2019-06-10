@@ -38,26 +38,24 @@ class TransitionTrackerAddFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        var transitionList = arrayOfNulls<Int>(9)
+
         layoutManager = LinearLayoutManager(context)
         rvTransitionProcess.layoutManager = layoutManager
-        adapter = TransitionAddRecyclerAdapter()
+        adapter = TransitionAddRecyclerAdapter(transitionList)
         rvTransitionProcess.adapter = adapter
 
         setupArrayAdapters()
         setupDateAdapters()
 
         transitionTrackerSubmit.setOnClickListener {
-            val bundle = Bundle()
             //class TransitionItem (var time: String, date : String, var notes: String, var transitionList : List<TransitionPillarStep>)
             val stepDate = "" + daySpinner.selectedItem + " " + monthSpinner.selectedItem + " " + yearSpinner.selectedItem
 
-            var transitionList = mutableListOf<TransitionPillarStep>()
-            var count = rvTransitionProcess.adapter!!.itemCount
-
             var newStep = TransitionItem(transitionTime, stepDate, etAddNotes.text.toString(), transitionList)
 
-            bundle.putString("transitionStepAdd", "no")
-            (activity as MainActivity).showFragment(FragmentType.TRANSITION_TRACKER, bundle, FragmentType.TRANSITION_TRACKER_ADD, false)
+            TransitionTrackerData.list.add(newStep)
+            (activity as MainActivity).showFragment(FragmentType.TRANSITION_TRACKER, false)
         }
 
     }

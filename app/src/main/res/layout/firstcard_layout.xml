@@ -13,11 +13,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="13dp"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="66dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/plus_circular"
             app:layout_constraintEnd_toStartOf="@id/addsteptext"
-            app:layout_constraintStart_toEndOf="@+id/transitionDae"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -30,24 +30,16 @@
             app:layout_constraintStart_toEndOf="@id/addStepIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/transitionDae"
-            android:layout_marginTop="35dp"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/transitionBarTop"
-            app:layout_constraintTop_toTopOf="parent"/>
 
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="2dp"
             android:layout_height="22dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="80dp"
             android:layout_marginEnd="20dp"
-            android:id="@+id/transitionBarTop"
+            android:id="@+id/transitionBarAddBottom"
             app:layout_constraintTop_toBottomOf="@id/addStepIcon"
-            app:layout_constraintStart_toEndOf="@id/transitionDae"
-            app:layout_constraintEnd_toStartOf="@id/transitionItemNotes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transitionBarTop"
             android:src="@color/colorGrey"/>
 
 
