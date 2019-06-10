@@ -38,7 +38,7 @@ class TransitionTrackerAddFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var transitionList = arrayOfNulls<Int>(9)
+        var transitionList = arrayOf(1,1,1,1,1,1,1,1,1)
 
         layoutManager = LinearLayoutManager(context)
         rvTransitionProcess.layoutManager = layoutManager

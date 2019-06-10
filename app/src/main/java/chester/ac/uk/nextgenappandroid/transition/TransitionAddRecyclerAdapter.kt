@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import chester.ac.uk.nextgenappandroid.R
 import kotlinx.android.synthetic.main.transition_tracker_add_card_layout.view.*
 
-class TransitionAddRecyclerAdapter(var transitionList : Array<Int?>): RecyclerView.Adapter<TransitionAddRecyclerAdapter.ViewHolder>() {
+class TransitionAddRecyclerAdapter(var transitionList : Array<Int>): RecyclerView.Adapter<TransitionAddRecyclerAdapter.ViewHolder>() {
 
 
     val steps = listOf("I understand the transition process and have been given a clear plan for my own transition going forward ",

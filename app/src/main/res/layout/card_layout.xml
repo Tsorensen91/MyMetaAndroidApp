@@ -12,11 +12,13 @@
         <TextView
             android:id="@+id/transitionBackground"
             android:layout_width="0dp"
-            android:layout_height="205dp"
+            android:layout_height="245dp"
             android:background="@color/colorLightGrey"
+            android:layout_marginBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/transitionBarTop"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/transitionDate"
@@ -43,10 +45,10 @@
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transitionBarBottom"
             android:layout_width="2dp"
-            android:layout_height="145dp"
+            android:layout_height="205dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="60dp"
             android:src="@color/colorGrey"
             app:layout_constraintEnd_toStartOf="@id/transitionBackground"
             app:layout_constraintHorizontal_bias="0.0"
@@ -68,15 +70,14 @@
         <TextView
             android:id="@+id/tvTransitionProcess"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@color/colorMagenta"
             android:gravity="center_vertical"
             android:text="Transition Process"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/transitionProcess"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +85,7 @@
         <TextView
             android:id="@+id/tvInfoAndResources"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -92,7 +93,6 @@
             android:gravity="center_vertical"
             android:text="Info and Resources"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/infoAndResources"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvTransitionProcess" />
@@ -100,7 +100,7 @@
         <TextView
             android:id="@+id/tvMyCondition"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -108,7 +108,6 @@
             android:gravity="center_vertical"
             android:text="My Condition"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/myCondition"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvInfoAndResources" />
@@ -116,7 +115,7 @@
         <TextView
             android:id="@+id/tvIndiviualCare"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -124,7 +123,6 @@
             android:gravity="center_vertical"
             android:text="Individual Care"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@id/individualCare"
             app:layout_constraintStart_toStartOf="@id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@id/tvMyCondition" />
@@ -132,7 +130,7 @@
         <TextView
             android:id="@+id/tvConsulting"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -140,7 +138,6 @@
             android:gravity="center_vertical"
             android:text="Consulting"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/consulting"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvIndiviualCare" />
@@ -148,7 +145,7 @@
         <TextView
             android:id="@+id/tvReflection"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -156,7 +153,6 @@
             android:gravity="center_vertical"
             android:text="Reflection"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/reflection"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvConsulting" />
@@ -164,7 +160,7 @@
         <TextView
             android:id="@+id/tvCommunicating"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -172,7 +168,6 @@
             android:gravity="center_vertical"
             android:text="Communicating My Care"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/communicating"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvReflection" />
@@ -180,7 +175,7 @@
         <TextView
             android:id="@+id/tvMeetingAdultCare"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -188,7 +183,6 @@
             android:gravity="center_vertical"
             android:text="Meeting Adult Care"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/meeting"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvCommunicating" />
@@ -196,7 +190,7 @@
         <TextView
             android:id="@+id/tvConfidenceInTransition"
             android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
@@ -204,7 +198,6 @@
             android:gravity="center_vertical"
             android:text="Confidence In Transition"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/confidence"
             app:layout_constraintStart_toStartOf="@+id/transitionBackground"
             app:layout_constraintTop_toBottomOf="@+id/tvMeetingAdultCare" />
@@ -212,10 +205,10 @@
         <TextView
             android:id="@+id/transitionProcess"
             android:layout_width="40dp"
-            android:layout_height="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:radius="5dp"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
@@ -224,10 +217,10 @@
         <TextView
             android:id="@+id/confidence"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meeting" />
@@ -235,10 +228,10 @@
         <TextView
             android:id="@+id/meeting"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/communicating" />
@@ -246,10 +239,10 @@
         <TextView
             android:id="@+id/individualCare"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myCondition" />
@@ -257,10 +250,10 @@
         <TextView
             android:id="@+id/consulting"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/individualCare" />
@@ -268,10 +261,10 @@
         <TextView
             android:id="@+id/communicating"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reflection" />
@@ -279,10 +272,10 @@
         <TextView
             android:id="@+id/myCondition"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/infoAndResources" />
@@ -290,10 +283,10 @@
         <TextView
             android:id="@+id/infoAndResources"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transitionProcess" />
@@ -301,10 +294,10 @@
         <TextView
             android:id="@+id/reflection"
             android:layout_width="40dp"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/colorTeal"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/consulting" />
@@ -314,7 +307,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Appointment time:"
             android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@+id/transitionBarTop"
@@ -325,7 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="35dp"
             android:text="10:00"
             android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@+id/transitionBarTop"
