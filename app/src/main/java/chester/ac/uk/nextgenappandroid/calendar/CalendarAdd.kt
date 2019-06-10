@@ -59,14 +59,17 @@ class CalendarAdd : Fragment(), OnShowFragment {
             val endTimeDate = cal.time
 
             CalendarData.addEvent(date, CalendarEvent(title, startTimeDate, endTimeDate, appointmentType, pushNotifications, location))
-            (activity as MainActivity).showFragment(FragmentType.CALENDAR_EXPANDED, true)
+
+            val bundle = Bundle()
+            bundle.putString("calendarDate", formatter.format(date))
+            (activity as MainActivity).showFragment(FragmentType.CALENDAR_EXPANDED, bundle, FragmentType.CALENDAR_ADD, true)
         }
     }
 
     override fun onShow(bundle: Bundle) {
         if(bundle.getString("from") == FragmentType.CALENDAR_EXPANDED.desc) {
 
-            date = formatter.parse(bundle.getString("calendarExpandDate"))
+            date = formatter.parse(bundle.getString("calendarDate"))
 
         }
     }

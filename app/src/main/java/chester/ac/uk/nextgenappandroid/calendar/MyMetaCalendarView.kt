@@ -1,15 +1,14 @@
 package chester.ac.uk.nextgenappandroid.calendar
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import java.util.*
+import android.R.attr.label
+import android.graphics.*
+import chester.ac.uk.nextgenappandroid.R.drawable.canvas
 
 
 class CalRect(var x: Float, var y: Float, var width: Float, var height: Float) {
@@ -60,11 +59,40 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
         textSize = 25f
     }
 
+    private val circleTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.WHITE
+        style = Paint.Style.FILL
+        textSize = 25f
+    }
+
+    private val circleAppointmentPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#eca610")
+        style = Paint.Style.FILL
+    }
+
+    private val circleNutritionPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#8dc63f")
+        style = Paint.Style.FILL
+    }
+
+    private val circleTransportPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#6dcff6")
+        style = Paint.Style.FILL
+    }
+
+    private val circleWorkPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#f06eaa")
+        style = Paint.Style.FILL
+    }
+
+    private val circlePlusPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.GRAY
+        style = Paint.Style.FILL
+    }
 
     init {
         updateCalendar()
     }
-
 
     private fun updateCalendar() {
         val calendar = currentDate.clone() as Calendar
@@ -73,14 +101,14 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         var monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2
 
-        if(monthBeginningCell == -1) //Stop wrapping of the cells out of the grid
+        if (monthBeginningCell == -1) //Stop wrapping of the cells out of the grid
             monthBeginningCell = 6
 
         // move calendar backwards to the beginning of the week
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell)
 
         // fill cells
-        for(i in 0 until cells.size) {
+        for (i in 0 until cells.size) {
             cells[i] = CalRect(0f, 0f, 0f, 0f)
             cells[i]?.date = calendar.time
             calendar.add(Calendar.DAY_OF_MONTH, 1)
@@ -112,7 +140,7 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
 
     }
 
-    val today = Date()
+    private val today = Date()
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -141,11 +169,116 @@ class MyMetaCalendarView(context: Context, attrs: AttributeSet) : View(context, 
                         canvas.drawText(day.toString(), cell.x + 20, cell.y + 30, textPaint)
                     }
 
+                    //Draw notification bubbles
+                    for (entry in CalendarData.calendarEntries) {
+                        if (entry.date.date == cell.date.date && entry.date.month == cell.date.month && entry.date.year == cell.date.year) {
+
+
+                            when {
+                                entry.events.size == 1 -> {
+                                    val event = entry.events[0]
+
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                }
+                                entry.events.size == 2 -> {
+                                    var event = entry.events[0]
+
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 25f, cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 25f, cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 25f, cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 25f, cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                    event = entry.events[1]
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 25f, cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 25f, cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 25f, cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 25f, cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+                                }
+                                entry.events.size == 3 -> {
+
+                                    var event = entry.events[0]
+
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                    event = entry.events[1]
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                    event = entry.events[2]
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 45f, cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 45f, cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 45f, cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 45f, cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+                                }
+                                entry.events.size > 3 -> {
+                                    var event = entry.events[0]
+
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) - 45f, cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                    event = entry.events[1]
+                                    when (event.type) {
+                                        EventType.APPOINTMENT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Ap", circleAppointmentPaint, circleTextPaint)
+                                        EventType.NUTRITION -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Nu", circleNutritionPaint, circleTextPaint)
+                                        EventType.TRANSPORT -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Tr", circleTransportPaint, circleTextPaint)
+                                        EventType.WORK -> drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2), cell.getRectF().bottom - 25f, "Wo", circleWorkPaint, circleTextPaint)
+
+                                    }
+
+                                    drawTextInCircle(canvas, cell.getRectF().left + (cell.getRectF().width() / 2) + 45f, cell.getRectF().bottom - 25f, "+${entry.events.size - 2}", circlePlusPaint, circleTextPaint)
+                                }
+                            }
+                        }
+                    }
+
                     canvas.drawRect(cell.getRectF(), rectOutline) //Draw rect outline
 
                 }
             }
         }
+    }
+
+    private fun drawTextInCircle(canvas: Canvas, xPos: Float, yPos: Float, text: String, circlePaint: Paint, textPaint: Paint) {
+        val textRect = Rect()
+        textPaint.getTextBounds(text, 0, text.length, textRect)
+
+        canvas.drawCircle(xPos, yPos, 20f, circlePaint)
+        if (text == "Ap")
+            canvas.drawText(text, xPos - (textRect.width() / 2f), yPos + (textRect.height() / 4f) + 4f, textPaint) //MAGIC NUMBERS
+        else
+            canvas.drawText(text, xPos - (textRect.width() / 2f), yPos + (textRect.height() / 2f), textPaint)
     }
 
     fun incrementMonth() {

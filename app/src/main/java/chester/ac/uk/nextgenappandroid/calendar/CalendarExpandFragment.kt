@@ -50,7 +50,7 @@ class CalendarExpandFragment : Fragment(), OnShowFragment {
         addCalendarEventButton.setOnClickListener {
 
             val bundle = Bundle()
-            bundle.putString("calendarExpandDate", formatter.format(date))
+            bundle.putString("calendarDate", formatter.format(date))
 
             (activity as MainActivity).showFragment(FragmentType.CALENDAR_ADD, bundle, FragmentType.CALENDAR_EXPANDED, true)
         }
@@ -58,7 +58,7 @@ class CalendarExpandFragment : Fragment(), OnShowFragment {
     }
 
     override fun onShow(bundle: Bundle) {
-        if (bundle.getString("from") == FragmentType.CALENDAR.desc) {
+        if (bundle.getString("from") == FragmentType.CALENDAR.desc || bundle.getString("from") == FragmentType.CALENDAR_ADD.desc) {
 
             date = formatter.parse(bundle.getString("calendarDate"))
 
