@@ -1,7 +1,6 @@
 package chester.ac.uk.nextgenappandroid.calendar
 
 import java.util.*
-import java.util.concurrent.CopyOnWriteArrayList
 
 enum class EventType {
     APPOINTMENT,
@@ -28,32 +27,36 @@ class CalendarEntry(val date: Date) {
 
 object CalendarData {
 
-    val calendarEntries = CopyOnWriteArrayList<CalendarEntry>()
-
-    private fun addEntry(entry: CalendarEntry) {
-        calendarEntries.add(entry)
-    }
+    val calendarEntries = mutableListOf<CalendarEntry>()
 
     fun addEvent(date: Date, event: CalendarEvent) {
+        val temp = mutableListOf<CalendarEntry>()
 
-        if (calendarEntries.size > 0)
-            for (entry in calendarEntries) {
+        if (calendarEntries.size > 0) {
+
+            val iterator = calendarEntries.iterator()
+
+            while (iterator.hasNext()) {
+                val entry = iterator.next()
                 if (entry.date.date == date.date && entry.date.month == date.month && entry.date.year == date.year) {
                     entry.addEvent(event)
-                } else {
-                    val e = CalendarEntry(date)
-                    e.addEvent(event)
-
-                    addEntry(e)
-
+                    calendarEntries.addAll(temp)
+                    return
                 }
-            } else {
+            }
+
+            val e = CalendarEntry(date)
+            e.addEvent(event)
+            temp.add(e)
+
+        } else {
             val e = CalendarEntry(date)
             e.addEvent(event)
 
-            addEntry(e)
+            temp.add(e)
         }
 
+        calendarEntries.addAll(temp)
     }
 
 }

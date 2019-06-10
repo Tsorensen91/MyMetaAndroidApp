@@ -37,6 +37,7 @@ class UpcomingEventsAdapter(val list: MutableList<CalendarEvent>) : RecyclerView
             EventType.WORK -> "Work"
         }
 
+        cardView.viewNotificationBubble.event = list[position].type
         cardView.tvStartTime.text = formatter.format(list[position].startTime)
         cardView.tvEndTime.text = formatter.format(list[position].endTime)
     }
