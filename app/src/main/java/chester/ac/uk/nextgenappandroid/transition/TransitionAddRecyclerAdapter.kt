@@ -34,6 +34,7 @@ class TransitionAddRecyclerAdapter(var transitionList : Array<Int>): RecyclerVie
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val cardView = viewHolder.itemView
         cardView.tvPillarQuestion.text = steps[position]
+        cardView.bubbleSeekBar.setProgress(1f)
 
         cardView.bubbleSeekBar.setOnTouchListener { v, event ->
             if (event != null) {
